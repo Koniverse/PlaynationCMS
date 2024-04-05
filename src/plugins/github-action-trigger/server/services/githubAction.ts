@@ -138,7 +138,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
           inputs
         }, {headers: getHeaders(token)});
         urlWorkflow = urlGetWorkflow(owner, repository, workflow);
-        await strapi.services['api::audit-log.audit-log'].addAuditLogDeploy(buttonInfo);
+        // await strapi.services['api::audit-log.audit-log'].addAuditLogDeploy(buttonInfo);
       } catch (error) {
         console.error('Error on trigger', error);
         const data = error.response?.data;
