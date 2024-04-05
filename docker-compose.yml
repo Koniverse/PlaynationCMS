@@ -1,0 +1,38 @@
+version: '3.5'
+
+services:
+#  strapi:
+#    image: node:18
+#    env_file:
+#      - ./.env
+#    command: yarn start
+#    environment:
+#      - NODE_ENV=production
+#    working_dir: /app
+#    volumes:
+#      - .:/app
+#    ports:
+#      - '1338:1337'
+#    depends_on:
+#      - postgres
+#    networks:
+#      - strapi_net
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: strapi
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi
+    ports:
+      - '5633:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data%
+    networks:
+      - strapi_net
+
+
+networks:
+  strapi_net:
+volumes:
+  postgres_data:

@@ -1,0 +1,5 @@
+/**
+ * listing service
+ */
+
+export default () => ({});
