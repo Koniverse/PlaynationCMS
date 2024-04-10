@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "games",
+  "info": {
+    "singularName": "game",
+    "pluralName": "games",
+    "displayName": "Game",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "url": {
+      "type": "string"
+    },
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "maxEnergy": {
+      "type": "integer"
+    },
+    "maxPoint": {
+      "type": "integer"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "rank_definition": {
+      "type": "component",
+      "repeatable": false,
+      "component": "game.rank-definition"
+    }
+  }
+}

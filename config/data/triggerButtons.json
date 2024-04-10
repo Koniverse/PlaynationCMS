@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "buttonID": "game-dev",
+    "apiID": "game",
+    "roles": [
+      "create"
+    ],
+    "label": "Deploy Development",
+    "variant": "secondary",
+    "workflow": "update-static-data.yml",
+    "branch": "main",
+    "inputs": {
+      "branch": "main",
+      "environment": "development",
+      "folder": "games"
+    }
+  },
+  {
+    "buttonID": "game-prod",
+    "apiID": "game",
+    "roles": [
+      "publish"
+    ],
+    "label": "Deploy Production",
+    "variant": "success-light",
+    "workflow": "update-static-data.yml",
+    "branch": "main",
+    "inputs": {
+      "branch": "main",
+      "environment": "production",
+      "folder": "games"
+    }
+  }
+]

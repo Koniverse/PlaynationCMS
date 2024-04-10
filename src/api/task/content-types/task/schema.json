@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tasks",
+  "info": {
+    "singularName": "task",
+    "pluralName": "tasks",
+    "displayName": "Task",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "game": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::game.game"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "pointReward": {
+      "type": "integer",
+      "required": true
+    },
+    "itemReward": {
+      "type": "integer",
+      "default": 1
+    }
+  }
+}

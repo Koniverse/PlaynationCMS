@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "game_items",
+  "info": {
+    "singularName": "game-item",
+    "pluralName": "game-items",
+    "displayName": "GameItem"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "game": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::game.game"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "tokenPrice": {
+      "type": "integer"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "maxBuy": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import triggerButtons from './data/triggerButtons.json';
+import triggerButtonApis from './data/triggerButtonsApi.json';
 export default ({ env }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
@@ -19,5 +20,10 @@ export default ({ env }) => ({
     githubBranch: env('GITHUB_CONTENT_BRANCH'),
     githubWorkflow: env('GITHUB_CONTENT_WORKFLOW'),
     triggerButtons,
+  },
+  apiActions: {
+    triggerButtons: triggerButtonApis,
+    apiActionUrl: env('API_ACTION_URL'),
+    apiToken: env('API_TOKEN'),
   }
 });

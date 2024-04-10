@@ -827,6 +827,143 @@ export interface PluginSlugifySlug extends Schema.CollectionType {
   };
 }
 
+export interface ApiAuditLogAuditLog extends Schema.CollectionType {
+  collectionName: 'audit_logs';
+  info: {
+    singularName: 'audit-log';
+    pluralName: 'audit-logs';
+    displayName: 'Audit Logs';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    contentType: Attribute.String;
+    action: Attribute.String;
+    contentId: Attribute.BigInteger;
+    updatedByUserName: Attribute.String;
+    updatedById: Attribute.Relation<
+      'api::audit-log.audit-log',
+      'oneToOne',
+      'admin::user'
+    >;
+    fromData: Attribute.JSON;
+    toData: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::audit-log.audit-log',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::audit-log.audit-log',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGameGame extends Schema.CollectionType {
+  collectionName: 'games';
+  info: {
+    singularName: 'game';
+    pluralName: 'games';
+    displayName: 'Game';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.Text;
+    icon: Attribute.Media;
+    url: Attribute.String;
+    banner: Attribute.Media;
+    maxEnergy: Attribute.Integer;
+    maxPoint: Attribute.Integer;
+    slug: Attribute.String;
+    active: Attribute.Boolean;
+    rank_definition: Attribute.Component<'game.rank-definition'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::game.game', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::game.game', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGameItemGameItem extends Schema.CollectionType {
+  collectionName: 'game_items';
+  info: {
+    singularName: 'game-item';
+    pluralName: 'game-items';
+    displayName: 'GameItem';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    game: Attribute.Relation<
+      'api::game-item.game-item',
+      'oneToOne',
+      'api::game.game'
+    >;
+    name: Attribute.String;
+    description: Attribute.Text;
+    tokenPrice: Attribute.Integer;
+    price: Attribute.Integer;
+    maxBuy: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::game-item.game-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::game-item.game-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTaskTask extends Schema.CollectionType {
+  collectionName: 'tasks';
+  info: {
+    singularName: 'task';
+    pluralName: 'tasks';
+    displayName: 'Task';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    game: Attribute.Relation<'api::task.task', 'oneToOne', 'api::game.game'>;
+    slug: Attribute.String;
+    pointReward: Attribute.Integer & Attribute.Required;
+    itemReward: Attribute.Integer & Attribute.DefaultTo<1>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::task.task', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::task.task', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -846,6 +983,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::slugify.slug': PluginSlugifySlug;
+      'api::audit-log.audit-log': ApiAuditLogAuditLog;
+      'api::game.game': ApiGameGame;
+      'api::game-item.game-item': ApiGameItemGameItem;
+      'api::task.task': ApiTaskTask;
     }
   }
 }

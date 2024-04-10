@@ -5,14 +5,10 @@ import axios from 'axios';
 import {Strapi} from "@strapi/strapi";
 import {GithubActionEnabledResponse, TriggerButtonInfo} from "../../types";
 
-const urlPostTrigger = (owner: string, repo: string, workflow: string) => `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${workflow}/dispatches`;
 const getHeaders = (token: string) => ({
   'Content-Type': 'application/json',
-  'Authorization': `Bearer ${token}`,
-  'Accept': 'application/vnd.github+json',
+  'authorization': `Bearer ${token}`,
 })
-
-const urlGetWorkflow = (owner: string, repo: string, workflow: string) => `https://github.com/${owner}/${repo}/actions/workflows/${workflow}`;
 
 export default ({ strapi }: { strapi: Strapi }) => ({
   async getRequireRoles(apiID: string) {
@@ -41,8 +37,9 @@ export default ({ strapi }: { strapi: Strapi }) => ({
   },
   async getButtons(apiID: string) {
     // @ts-ignore
-    const githubActions = await strapi.admin.config.githubActions;
-    const {triggerButtons} = githubActions;
+    const apiActions = await strapi.admin.config.apiActions;
+    console.log('apiActions', apiActions)
+    const {triggerButtons} = apiActions;
     let enabled = false;
     const requireRoles = await this.getRequireRoles(apiID);
 
@@ -64,15 +61,6 @@ export default ({ strapi }: { strapi: Strapi }) => ({
     if (buttons.length > 0) {
       enabled = true;
     }
-    if (enabled) {
-      const {triggerButtons, disabled} = githubActions;
-      if (triggerButtons && triggerButtons.hasOwnProperty(apiID) && !disabled) {
-        buttons.push(...triggerButtons[apiID]);
-      }
-      if (disabled) {
-        enabled = false;
-      }
-    }
 
     return {
       enabled,
@@ -81,17 +69,12 @@ export default ({ strapi }: { strapi: Strapi }) => ({
   },
   async trigger(buttonID: string) {
     // @ts-ignore
-    const githubActions = await strapi.admin.config.githubActions;
-    const {
-      triggerButtons,
-      githubToken,
-      githubOwner,
-      githubRepo,
-      githubBranch,
-      githubWorkflow
-    } = githubActions;
+    const apiActions = await strapi.admin.config.apiActions;
+    const {triggerButtons, apiToken, apiActionUrl} = apiActions;
     let urlWorkflow = '';
     let executed = false;
+    console.log('triggerButtons', triggerButtons)
+    console.log('buttonID', buttonID)
 
     const buttonInfo = triggerButtons.find((button) => button.buttonID === buttonID);
     const {enabled} = await this.getButtons(buttonInfo.apiID);
@@ -104,47 +87,33 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
     if (buttonInfo) {
       executed = true;
-      let {
-        workflow,
-        repository,
-        branch,
-        owner,
-        token,
-        inputs,
-        apiID,
-        buttonID
-      } = buttonInfo;
-      if (!workflow) {
-        workflow = githubWorkflow;
+      console.log('buttonInfo', buttonInfo);
+      const {singularName, routerApi} = buttonInfo;
+      // const url = urlPostTrigger(owner, repository, workflow);
+      const generalParams = {
+        publicationState: 'preview' ,
+        locale: 'en'
       }
-      if (!repository) {
-        repository = githubRepo;
-      }
-      if (!branch) {
-        branch = githubBranch;
-      }
-      if (!owner) {
-        owner = githubOwner;
-      }
-      if (!token) {
-        token = githubToken;
-      }
-      const url = urlPostTrigger(owner, repository, workflow);
-
+      const contentSend = await strapi.service(singularName).customList(generalParams)
       try {
-        console.log('Trigger Github Action with config', url, branch, inputs);
+        const url = `${apiActionUrl}${routerApi}`;
         const data = await axios.post(url, {
-          ref: branch,
-          inputs
-        }, {headers: getHeaders(token)});
-        urlWorkflow = urlGetWorkflow(owner, repository, workflow);
-        await strapi.services['api::audit-log.audit-log'].addAuditLogDeploy(buttonInfo);
+          data: contentSend
+        }, {headers: getHeaders(apiToken)});
+        console.log('data', data)
+        // await strapi.services['api::audit-log.audit-log'].addAuditLogDeploy(buttonInfo);
+        return {
+            type: 'success',
+          status: true,
+            message: 'Triggered successfully'
+        }
       } catch (error) {
         console.error('Error on trigger', error);
         const data = error.response?.data;
         if (data && data.message) {
           return {
-            executed: false,
+            type: 'warning',
+            status: false,
             message: data.message
           }
         }

@@ -15,6 +15,9 @@ export default {
       }
 
       let result = [];
+      if (pluralId === 'game') {
+        result = await strapi.service('api::game.game').customList(generalParams);
+      }
 
       // remove some fields
       if (result.length) {
