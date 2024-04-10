@@ -46,7 +46,6 @@ const Index = ({}) => {
   const handleClick = useCallback((buttonID: string) => async () => {
     try {
       setLoading(true);
-      console.log('buttonID', buttonID)
       const response = await post(`github-action-trigger/api-trigger`, {buttonID}, {
         headers: {
           'Content-Type': 'application/json',

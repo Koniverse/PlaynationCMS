@@ -71,25 +71,19 @@ export default ({ strapi }: { strapi: Strapi }) => ({
     // @ts-ignore
     const apiActions = await strapi.admin.config.apiActions;
     const {triggerButtons, apiToken, apiActionUrl} = apiActions;
-    let urlWorkflow = '';
     let executed = false;
-    console.log('triggerButtons', triggerButtons)
-    console.log('buttonID', buttonID)
 
     const buttonInfo = triggerButtons.find((button) => button.buttonID === buttonID);
     const {enabled} = await this.getButtons(buttonInfo.apiID);
     if (!enabled) {
       return {
         executed,
-        urlWorkflow
       }
     }
 
     if (buttonInfo) {
       executed = true;
-      console.log('buttonInfo', buttonInfo);
       const {singularName, routerApi} = buttonInfo;
-      // const url = urlPostTrigger(owner, repository, workflow);
       const generalParams = {
         publicationState: 'preview' ,
         locale: 'en'
@@ -97,14 +91,13 @@ export default ({ strapi }: { strapi: Strapi }) => ({
       const contentSend = await strapi.service(singularName).customList(generalParams)
       try {
         const url = `${apiActionUrl}${routerApi}`;
-        const data = await axios.post(url, {
+        await axios.post(url, {
           data: contentSend
         }, {headers: getHeaders(apiToken)});
-        console.log('data', data)
-        // await strapi.services['api::audit-log.audit-log'].addAuditLogDeploy(buttonInfo);
+        await strapi.services['api::audit-log.audit-log'].addAuditLogDeploy(buttonInfo, 'api');
         return {
             type: 'success',
-          status: true,
+            status: true,
             message: 'Triggered successfully'
         }
       } catch (error) {
@@ -120,8 +113,9 @@ export default ({ strapi }: { strapi: Strapi }) => ({
       }
     }
     return {
-      executed,
-      urlWorkflow
+      type: 'warning',
+      status: false,
+      message: 'Not Found'
     }
   }
 });

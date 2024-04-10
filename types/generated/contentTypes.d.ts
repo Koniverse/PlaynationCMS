@@ -887,8 +887,9 @@ export interface ApiGameGame extends Schema.CollectionType {
     maxEnergy: Attribute.Integer;
     maxPoint: Attribute.Integer;
     slug: Attribute.String;
-    active: Attribute.Boolean;
     rank_definition: Attribute.Component<'game.rank-definition'>;
+    energyPerGame: Attribute.Integer;
+    maxPointPerGame: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -904,7 +905,7 @@ export interface ApiGameItemGameItem extends Schema.CollectionType {
   info: {
     singularName: 'game-item';
     pluralName: 'game-items';
-    displayName: 'GameItem';
+    displayName: 'Game Item';
   };
   options: {
     draftAndPublish: true;

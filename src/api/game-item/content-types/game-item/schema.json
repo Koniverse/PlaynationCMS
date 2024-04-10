@@ -4,7 +4,7 @@
   "info": {
     "singularName": "game-item",
     "pluralName": "game-items",
-    "displayName": "GameItem"
+    "displayName": "Game Item"
   },
   "options": {
     "draftAndPublish": true

@@ -18,6 +18,12 @@ export default {
       if (pluralId === 'game') {
         result = await strapi.service('api::game.game').customList(generalParams);
       }
+      if (pluralId === 'game-item') {
+        result = await strapi.service('api::game-item.game-item').customList(generalParams);
+      }
+      if (pluralId === 'task') {
+        result = await strapi.service('api::task.task').customList(generalParams);
+      }
 
       // remove some fields
       if (result.length) {

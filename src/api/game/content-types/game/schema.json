@@ -52,13 +52,16 @@
     "slug": {
       "type": "string"
     },
-    "active": {
-      "type": "boolean"
-    },
     "rank_definition": {
       "type": "component",
       "repeatable": false,
       "component": "game.rank-definition"
+    },
+    "energyPerGame": {
+      "type": "integer"
+    },
+    "maxPointPerGame": {
+      "type": "integer"
     }
   }
 }

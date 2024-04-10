@@ -15,10 +15,14 @@ export default factories.createCoreService('api::game.game', ({strapi}) => ({
       },
       ...params
     });
-    console.log('data', data)
     data.forEach((d) => {
       d.icon = d.icon?.url || d.icon;
       d.banner = d.banner?.url || d.banner;
+      // @ts-ignore
+      d.active = d.publishedAt !== null;
+      d.createdAt !== undefined && delete d.createdAt;
+      d.updatedAt !== undefined && delete d.updatedAt;
+      d.publishedAt !== undefined && delete d.publishedAt;
     })
 
     return data

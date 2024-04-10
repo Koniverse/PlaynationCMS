@@ -32,20 +32,25 @@ export default factories.createCoreService('api::audit-log.audit-log', ({strapi}
     }
     return _fromData;
   },
-  async addAuditLogDeploy(buttonInfo: TriggerButtonInfo) {
+  async addAuditLogDeploy(buttonInfo: TriggerButtonInfo, deployType: string = '') {
     const {buttonID, apiID} = buttonInfo;
     // @ts-ignore
     const inputs = buttonInfo?.inputs || {};
-    if (!inputs) {
+    if (!inputs && deployType === '') {
       return;
     }
     const {environment, folder} = inputs;
-    if (!environment || !folder) {
-      return;
+    if (deployType === '') {
+        if (!environment || !folder) {
+            return;
+        }
     }
     const isProduction = environment === 'production';
     const nameFile = isProduction ? 'list' : 'preview';
-    const action = isProduction ? 'deploy_production' : 'deploy_development';
+    let action = isProduction ? 'deploy_production' : 'deploy_development';
+    if (deployType === 'api') {
+      action = 'deploy_api';
+    }
     const user = this.getUserName();
     if (!user) {
       return;
@@ -53,11 +58,13 @@ export default factories.createCoreService('api::audit-log.audit-log', ({strapi}
     const url = `${RESOURCE_URL}/${folder}/${nameFile}.json`;
     let fromData = {};
 
-    try {
-      const response = await axios.get(url);
-      fromData = response.data;
-    } catch (e) {
-      console.log('error', e);
+    if (deployType === '') {
+        try {
+          const response = await axios.get(url);
+          fromData = response.data;
+        } catch (e) {
+          console.log('error', e);
+        }
     }
     const singularName = `api::${apiID}.${apiID}`;
 

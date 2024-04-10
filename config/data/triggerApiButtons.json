@@ -1,0 +1,35 @@
+[
+  {
+    "buttonID": "game-api",
+    "apiID": "game",
+    "label": "Deploy API",
+    "variant": "secondary",
+    "routerApi": "/api/game/sync",
+    "singularName": "api::game.game",
+    "roles": [
+      "create"
+    ]
+  },
+  {
+    "buttonID": "game-item-api",
+    "apiID": "game-item",
+    "label": "Deploy API",
+    "variant": "secondary",
+    "routerApi": "/api/shop/sync",
+    "singularName": "api::game-item.game-item",
+    "roles": [
+      "create"
+    ]
+  },
+  {
+    "buttonID": "task-api",
+    "apiID": "task",
+    "label": "Deploy API",
+    "variant": "secondary",
+    "routerApi": "/api/task/sync",
+    "singularName": "api::task.task",
+    "roles": [
+      "create"
+    ]
+  }
+]
