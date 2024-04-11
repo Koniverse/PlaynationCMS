@@ -12,7 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "slug": {
+      "type": "string"
+    },
     "name": {
+      "type": "string"
+    },
+    "url": {
       "type": "string"
     },
     "description": {
@@ -28,9 +34,6 @@
         "videos",
         "audios"
       ]
-    },
-    "url": {
-      "type": "string"
     },
     "banner": {
       "type": "media",
@@ -48,9 +51,6 @@
     },
     "maxPoint": {
       "type": "integer"
-    },
-    "slug": {
-      "type": "string"
     },
     "rank_definition": {
       "type": "component",

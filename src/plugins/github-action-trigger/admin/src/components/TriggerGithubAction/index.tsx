@@ -7,7 +7,7 @@ const Index = ({}) => {
    const toggleNotification = useNotification();
   const { get, post } = useFetchClient();
   // @ts-ignore
-  const {contentType: {apiID}} = useSelector((state) => state['content-manager_listView'] || {});
+  const {contentType} = useSelector((state) => state['content-manager_listView'] || {});
   const [loading, setLoading] = useState(false);
   const [triggerButtons, setTriggerButtons] = useState<TriggerButtonInfo[]>([])
 
@@ -23,11 +23,16 @@ const Index = ({}) => {
   }
 
   useEffect(() => {
+    const apiID = contentType?.apiID;
+    if (!apiID) {
+      return;
+    }
+
     (async () => {
       try {
         const response = await get(`github-action-trigger/buttons`, {
           params: {apiID},
-          validateStatus: (status) => status < 500,
+          validateStatus: (status: number) => status < 500,
         });
         const {enabled, buttons} = response.data;
 
@@ -36,7 +41,7 @@ const Index = ({}) => {
         console.error(e);
       }
     })();
-  }, [apiID]);
+  }, [contentType?.apiID]);
 
   const openInNewTab = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');

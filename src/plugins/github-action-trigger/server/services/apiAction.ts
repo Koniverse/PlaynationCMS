@@ -38,7 +38,6 @@ export default ({ strapi }: { strapi: Strapi }) => ({
   async getButtons(apiID: string) {
     // @ts-ignore
     const apiActions = await strapi.admin.config.apiActions;
-    console.log('apiActions', apiActions)
     const {triggerButtons} = apiActions;
     let enabled = false;
     const requireRoles = await this.getRequireRoles(apiID);

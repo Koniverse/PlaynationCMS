@@ -879,14 +879,14 @@ export interface ApiGameGame extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    slug: Attribute.String;
     name: Attribute.String;
+    url: Attribute.String;
     description: Attribute.Text;
     icon: Attribute.Media;
-    url: Attribute.String;
     banner: Attribute.Media;
     maxEnergy: Attribute.Integer;
     maxPoint: Attribute.Integer;
-    slug: Attribute.String;
     rank_definition: Attribute.Component<'game.rank-definition'>;
     energyPerGame: Attribute.Integer;
     maxPointPerGame: Attribute.Integer;
