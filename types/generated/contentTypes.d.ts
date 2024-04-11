@@ -955,6 +955,9 @@ export interface ApiTaskTask extends Schema.CollectionType {
     slug: Attribute.String;
     pointReward: Attribute.Integer & Attribute.Required;
     itemReward: Attribute.Integer & Attribute.DefaultTo<1>;
+    name: Attribute.String;
+    description: Attribute.String;
+    icon: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
