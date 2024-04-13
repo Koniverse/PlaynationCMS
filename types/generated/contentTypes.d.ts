@@ -906,6 +906,7 @@ export interface ApiGameItemGameItem extends Schema.CollectionType {
     singularName: 'game-item';
     pluralName: 'game-items';
     displayName: 'Game Item';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -921,6 +922,7 @@ export interface ApiGameItemGameItem extends Schema.CollectionType {
     tokenPrice: Attribute.Integer;
     price: Attribute.Integer;
     maxBuy: Attribute.Integer;
+    effectDuration: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

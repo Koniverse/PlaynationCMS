@@ -4,7 +4,8 @@
   "info": {
     "singularName": "game-item",
     "pluralName": "game-items",
-    "displayName": "Game Item"
+    "displayName": "Game Item",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -29,6 +30,9 @@
       "type": "integer"
     },
     "maxBuy": {
+      "type": "integer"
+    },
+    "effectDuration": {
       "type": "integer"
     }
   }
