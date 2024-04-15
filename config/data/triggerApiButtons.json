@@ -1,9 +1,21 @@
 [
   {
-    "buttonID": "game-api",
+    "buttonID": "game-production-api",
     "apiID": "game",
-    "label": "Deploy API",
+    "label": "Deploy Production API",
     "variant": "secondary",
+    "routerApi": "/api/game/sync",
+    "singularName": "api::game.game",
+    "roles": [
+      "create"
+    ]
+  },
+  {
+    "buttonID": "game-dev-api",
+    "apiID": "game",
+    "label": "Deploy Development API",
+    "hostUrl": "http://172.17.0.1:8108",
+    "variant": "success-light",
     "routerApi": "/api/game/sync",
     "singularName": "api::game.game",
     "roles": [
@@ -13,8 +25,20 @@
   {
     "buttonID": "game-item-api",
     "apiID": "game-item",
-    "label": "Deploy API",
+    "label": "Deploy Production API",
     "variant": "secondary",
+    "routerApi": "/api/shop/sync",
+    "singularName": "api::game-item.game-item",
+    "roles": [
+      "create"
+    ]
+  },
+  {
+    "buttonID": "game-item-api",
+    "apiID": "game-item",
+    "label": "Deploy Development API",
+    "hostUrl": "http://172.17.0.1:8108",
+    "variant": "success-light",
     "routerApi": "/api/shop/sync",
     "singularName": "api::game-item.game-item",
     "roles": [
@@ -24,8 +48,20 @@
   {
     "buttonID": "task-api",
     "apiID": "task",
-    "label": "Deploy API",
+    "label": "Deploy Production API",
     "variant": "secondary",
+    "routerApi": "/api/task/sync",
+    "singularName": "api::task.task",
+    "roles": [
+      "create"
+    ]
+  },
+  {
+    "buttonID": "task-api",
+    "apiID": "task",
+    "label": "Deploy Development API",
+    "hostUrl": "http://172.17.0.1:8108",
+    "variant": "success-light",
     "routerApi": "/api/task/sync",
     "singularName": "api::task.task",
     "roles": [

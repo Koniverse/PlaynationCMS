@@ -43,10 +43,6 @@ const Index = ({}) => {
     })();
   }, [contentType?.apiID]);
 
-  const openInNewTab = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
   const handleClick = useCallback((buttonID: string) => async () => {
     try {
       setLoading(true);

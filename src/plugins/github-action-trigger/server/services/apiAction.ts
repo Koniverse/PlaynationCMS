@@ -70,6 +70,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
     // @ts-ignore
     const apiActions = await strapi.admin.config.apiActions;
     const {triggerButtons, apiToken, apiActionUrl} = apiActions;
+    let hostUrl = apiActionUrl;
     let executed = false;
 
     const buttonInfo = triggerButtons.find((button) => button.buttonID === buttonID);
@@ -83,13 +84,17 @@ export default ({ strapi }: { strapi: Strapi }) => ({
     if (buttonInfo) {
       executed = true;
       const {singularName, routerApi} = buttonInfo;
+      if (buttonInfo.hostUrl){
+        hostUrl = buttonInfo.hostUrl;
+      }
       const generalParams = {
         publicationState: 'preview' ,
         locale: 'en'
       }
       const contentSend = await strapi.service(singularName).customList(generalParams)
       try {
-        const url = `${apiActionUrl}${routerApi}`;
+        const url = `${hostUrl}${routerApi}`;
+        console.log('url', url)
         await axios.post(url, {
           data: contentSend
         }, {headers: getHeaders(apiToken)});
