@@ -890,6 +890,9 @@ export interface ApiGameGame extends Schema.CollectionType {
     rank_definition: Attribute.Component<'game.rank-definition'>;
     energyPerGame: Attribute.Integer;
     maxPointPerGame: Attribute.Integer;
+    active: Attribute.Boolean;
+    startTime: Attribute.DateTime;
+    endTime: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -934,6 +937,38 @@ export interface ApiGameItemGameItem extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::game-item.game-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGiveAwayPointGiveAwayPoint extends Schema.CollectionType {
+  collectionName: 'give_away_points';
+  info: {
+    singularName: 'give-away-point';
+    pluralName: 'give-away-points';
+    displayName: 'Give Away Point';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    note: Attribute.Text;
+    point: Attribute.Integer;
+    inviteCode: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::give-away-point.give-away-point',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::give-away-point.give-away-point',
       'oneToOne',
       'admin::user'
     > &
@@ -993,6 +1028,7 @@ declare module '@strapi/types' {
       'api::audit-log.audit-log': ApiAuditLogAuditLog;
       'api::game.game': ApiGameGame;
       'api::game-item.game-item': ApiGameItemGameItem;
+      'api::give-away-point.give-away-point': ApiGiveAwayPointGiveAwayPoint;
       'api::task.task': ApiTaskTask;
     }
   }

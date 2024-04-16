@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "give_away_points",
+  "info": {
+    "singularName": "give-away-point",
+    "pluralName": "give-away-points",
+    "displayName": "Give Away Point"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "note": {
+      "type": "text"
+    },
+    "point": {
+      "type": "integer"
+    },
+    "inviteCode": {
+      "type": "string"
+    }
+  }
+}
