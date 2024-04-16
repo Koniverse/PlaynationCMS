@@ -34,7 +34,7 @@
     ]
   },
   {
-    "buttonID": "game-item-api",
+    "buttonID": "game-item-dev-api",
     "apiID": "game-item",
     "label": "Deploy Development API",
     "hostUrl": "http://172.17.0.1:8108",
@@ -57,7 +57,7 @@
     ]
   },
   {
-    "buttonID": "task-api",
+    "buttonID": "task-dev-api",
     "apiID": "task",
     "label": "Deploy Development API",
     "hostUrl": "http://172.17.0.1:8108",
