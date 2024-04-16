@@ -926,6 +926,8 @@ export interface ApiGameItemGameItem extends Schema.CollectionType {
     price: Attribute.Integer;
     maxBuy: Attribute.Integer;
     effectDuration: Attribute.Integer;
+    itemGroup: Attribute.Integer;
+    itemGroupLevel: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
