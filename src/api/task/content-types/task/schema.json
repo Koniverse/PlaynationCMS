@@ -47,6 +47,9 @@
     },
     "url": {
       "type": "string"
+    },
+    "interval": {
+      "type": "integer"
     }
   }
 }

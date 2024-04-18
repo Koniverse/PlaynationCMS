@@ -998,6 +998,7 @@ export interface ApiTaskTask extends Schema.CollectionType {
     description: Attribute.String;
     icon: Attribute.Media;
     url: Attribute.String;
+    interval: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
