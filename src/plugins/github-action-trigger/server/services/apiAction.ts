@@ -84,8 +84,10 @@ export default ({ strapi }: { strapi: Strapi }) => ({
     if (buttonInfo) {
       executed = true;
       const {singularName, routerApi} = buttonInfo;
+      let deployType = 'api_deploy_production';
       if (buttonInfo.hostUrl){
         hostUrl = buttonInfo.hostUrl;
+        deployType = 'api_deploy_development';
       }
       const generalParams = {
         publicationState: 'live' ,
@@ -98,7 +100,8 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         await axios.post(url, {
           data: contentSend
         }, {headers: getHeaders(apiToken)});
-        await strapi.services['api::audit-log.audit-log'].addAuditLogDeploy(buttonInfo, 'api');
+
+        await strapi.services['api::audit-log.audit-log'].addAuditLogDeploy(buttonInfo, deployType);
         return {
             type: 'success',
             status: true,

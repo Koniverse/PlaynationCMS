@@ -48,8 +48,8 @@ export default factories.createCoreService('api::audit-log.audit-log', ({strapi}
     const isProduction = environment === 'production';
     const nameFile = isProduction ? 'list' : 'preview';
     let action = isProduction ? 'deploy_production' : 'deploy_development';
-    if (deployType === 'api') {
-      action = 'deploy_api';
+    if (deployType.startsWith('api')) {
+      action = deployType;
     }
     const user = this.getUserName();
     if (!user) {
