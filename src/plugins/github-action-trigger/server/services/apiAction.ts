@@ -88,10 +88,10 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         hostUrl = buttonInfo.hostUrl;
       }
       const generalParams = {
-        publicationState: 'preview' ,
+        publicationState: 'live' ,
         locale: 'en'
       }
-      const contentSend = await strapi.service(singularName).customList(generalParams)
+      const contentSend = await strapi.service(singularName).customList(generalParams);
       try {
         const url = `${hostUrl}${routerApi}`;
         console.log('url', url)
