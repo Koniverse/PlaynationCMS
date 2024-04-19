@@ -7,7 +7,7 @@
     "routerApi": "/api/game/sync",
     "singularName": "api::game.game",
     "roles": [
-      "create"
+      "publish"
     ]
   },
   {
@@ -30,7 +30,7 @@
     "routerApi": "/api/shop/sync",
     "singularName": "api::game-item.game-item",
     "roles": [
-      "create"
+      "publish"
     ]
   },
   {
@@ -53,7 +53,7 @@
     "routerApi": "/api/task/sync",
     "singularName": "api::task.task",
     "roles": [
-      "create"
+      "publish"
     ]
   },
   {
@@ -76,7 +76,7 @@
     "routerApi": "/api/account/sync-giveaway",
     "singularName": "api::give-away-point.give-away-point",
     "roles": [
-      "create"
+      "publish"
     ]
   },
   {
