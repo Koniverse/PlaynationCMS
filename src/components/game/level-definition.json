@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_game_level_definitions",
+  "info": {
+    "displayName": "Level Definition",
+    "icon": "magic",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "level": {
+      "type": "integer"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "maxPointPerGame": {
+      "type": "integer"
+    }
+  }
+}

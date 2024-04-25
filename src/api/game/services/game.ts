@@ -10,7 +10,7 @@ export default factories.createCoreService('api::game.game', ({strapi}) => ({
       sort: 'id:asc',
       populate: {
         'icon': true,
-        'rank_definition': true,
+        'levelDefinition': true,
         'banner': true,
       },
       ...params
