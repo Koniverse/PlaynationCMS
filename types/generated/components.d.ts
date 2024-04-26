@@ -1,23 +1,22 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface GameLevelDefinition extends Schema.Component {
-  collectionName: 'components_game_level_definitions';
+export interface GameRankDefinition extends Schema.Component {
+  collectionName: 'components_game_rank_definitions';
   info: {
-    displayName: 'Level Definition';
-    icon: 'magic';
-    description: '';
+    displayName: 'Rank Definition';
   };
   attributes: {
-    level: Attribute.Integer;
-    price: Attribute.Integer;
-    maxPointPerGame: Attribute.Integer;
+    point: Attribute.Integer;
+    days: Attribute.Integer;
+    premium_ref: Attribute.String;
+    ref: Attribute.String;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'game.level-definition': GameLevelDefinition;
+      'game.rank-definition': GameRankDefinition;
     }
   }
 }

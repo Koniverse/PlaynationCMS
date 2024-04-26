@@ -52,6 +52,11 @@
     "maxPoint": {
       "type": "integer"
     },
+    "rank_definition": {
+      "type": "component",
+      "repeatable": false,
+      "component": "game.rank-definition"
+    },
     "energyPerGame": {
       "type": "integer"
     },
@@ -66,11 +71,6 @@
     },
     "endTime": {
       "type": "datetime"
-    },
-    "levelDefinition": {
-      "type": "component",
-      "repeatable": true,
-      "component": "game.level-definition"
     }
   }
 }

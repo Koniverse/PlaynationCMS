@@ -887,12 +887,12 @@ export interface ApiGameGame extends Schema.CollectionType {
     banner: Attribute.Media;
     maxEnergy: Attribute.Integer;
     maxPoint: Attribute.Integer;
+    rank_definition: Attribute.Component<'game.rank-definition'>;
     energyPerGame: Attribute.Integer;
     maxPointPerGame: Attribute.Integer;
     active: Attribute.Boolean;
     startTime: Attribute.DateTime;
     endTime: Attribute.DateTime;
-    levelDefinition: Attribute.Component<'game.level-definition', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

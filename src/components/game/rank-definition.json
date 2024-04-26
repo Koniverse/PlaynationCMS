@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_game_rank_definitions",
+  "info": {
+    "displayName": "Rank Definition"
+  },
+  "options": {},
+  "attributes": {
+    "point": {
+      "type": "integer"
+    },
+    "days": {
+      "type": "integer"
+    },
+    "premium_ref": {
+      "type": "string"
+    },
+    "ref": {
+      "type": "string"
+    }
+  }
+}
