@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "task_categories",
+  "info": {
+    "singularName": "task-category",
+    "pluralName": "task-categories",
+    "displayName": "Task Category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "active": {
+      "type": "boolean"
+    }
+  }
+}

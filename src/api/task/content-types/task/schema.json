@@ -56,6 +56,14 @@
     },
     "endTime": {
       "type": "datetime"
+    },
+    "task_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::task-category.task-category"
+    },
+    "active": {
+      "type": "boolean"
     }
   }
 }

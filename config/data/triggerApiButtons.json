@@ -90,5 +90,28 @@
     "roles": [
       "create"
     ]
+  },
+  {
+    "buttonID": "task-category-api",
+    "apiID": "task-category",
+    "label": "Deploy Production API",
+    "variant": "secondary",
+    "routerApi": "/api/task-category/sync",
+    "singularName": "api::task-category.task-category",
+    "roles": [
+      "publish"
+    ]
+  },
+  {
+    "buttonID": "task-category-dev-api",
+    "apiID": "task-category",
+    "label": "Deploy Development API",
+    "hostUrl": "http://172.17.0.1:8108",
+    "variant": "success-light",
+    "routerApi": "/api/task-category/sync",
+    "singularName": "api::task-category.task-category",
+    "roles": [
+      "create"
+    ]
   }
 ]

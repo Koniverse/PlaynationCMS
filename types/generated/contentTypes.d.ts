@@ -1001,12 +1001,52 @@ export interface ApiTaskTask extends Schema.CollectionType {
     interval: Attribute.Integer;
     startTime: Attribute.DateTime;
     endTime: Attribute.DateTime;
+    task_category: Attribute.Relation<
+      'api::task.task',
+      'oneToOne',
+      'api::task-category.task-category'
+    >;
+    active: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::task.task', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::task.task', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTaskCategoryTaskCategory extends Schema.CollectionType {
+  collectionName: 'task_categories';
+  info: {
+    singularName: 'task-category';
+    pluralName: 'task-categories';
+    displayName: 'Task Category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    slug: Attribute.String;
+    description: Attribute.Text;
+    icon: Attribute.Media;
+    active: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::task-category.task-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::task-category.task-category',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -1035,6 +1075,7 @@ declare module '@strapi/types' {
       'api::game-item.game-item': ApiGameItemGameItem;
       'api::give-away-point.give-away-point': ApiGiveAwayPointGiveAwayPoint;
       'api::task.task': ApiTaskTask;
+      'api::task-category.task-category': ApiTaskCategoryTaskCategory;
     }
   }
 }

@@ -10,15 +10,19 @@ export default factories.createCoreService('api::task.task', ({strapi}) => ({
       sort: 'id:asc',
       populate: {
         'game': true,
-        'icon': true
+        'icon': true,
+        'task_category': true,
       },
       ...params
     });
     data.forEach((d) => {
       // @ts-ignore
       d.gameId = d.game?.id || d.game;
+      // @ts-ignore
+      d.categoryId = d.task_category?.id || d.task_category;
       d.icon = d.icon?.url || d.icon;
       d.game && delete d.game;
+      d.task_category && delete d.task_category;
       d.createdAt !== undefined && delete d.createdAt;
       d.updatedAt !== undefined && delete d.updatedAt;
       d.publishedAt !== undefined && delete d.publishedAt;
