@@ -920,14 +920,16 @@ export interface ApiGameItemGameItem extends Schema.CollectionType {
       'oneToOne',
       'api::game.game'
     >;
+    slug: Attribute.String;
     name: Attribute.String;
     description: Attribute.Text;
-    tokenPrice: Attribute.Integer;
     price: Attribute.Integer;
+    tokenPrice: Attribute.Integer;
     maxBuy: Attribute.Integer;
-    effectDuration: Attribute.Integer;
-    itemGroup: Attribute.Integer;
+    maxBuyDaily: Attribute.Integer;
+    itemGroup: Attribute.String;
     itemGroupLevel: Attribute.Integer;
+    effectDuration: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

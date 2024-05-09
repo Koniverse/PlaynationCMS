@@ -19,7 +19,7 @@ export default factories.createCoreService('api::game-item.game-item', ({strapi}
       d.game && delete d.game;
       // @ts-ignore
       d.slug = null;
-      if (d.itemGroup > 0 && d.itemGroupLevel > 0) {
+      if (d.itemGroup && d.itemGroupLevel > 0) {
         // @ts-ignore
         d.slug = `level${d.itemGroupLevel}`;
       }

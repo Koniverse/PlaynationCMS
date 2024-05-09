@@ -17,28 +17,34 @@
       "relation": "oneToOne",
       "target": "api::game.game"
     },
+    "slug": {
+      "type": "string"
+    },
     "name": {
       "type": "string"
     },
     "description": {
       "type": "text"
     },
-    "tokenPrice": {
+    "price": {
       "type": "integer"
     },
-    "price": {
+    "tokenPrice": {
       "type": "integer"
     },
     "maxBuy": {
       "type": "integer"
     },
-    "effectDuration": {
+    "maxBuyDaily": {
       "type": "integer"
     },
     "itemGroup": {
-      "type": "integer"
+      "type": "string"
     },
     "itemGroupLevel": {
+      "type": "integer"
+    },
+    "effectDuration": {
       "type": "integer"
     }
   }
