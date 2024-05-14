@@ -930,6 +930,7 @@ export interface ApiGameItemGameItem extends Schema.CollectionType {
     itemGroup: Attribute.String;
     itemGroupLevel: Attribute.Integer;
     effectDuration: Attribute.Integer;
+    icon: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
