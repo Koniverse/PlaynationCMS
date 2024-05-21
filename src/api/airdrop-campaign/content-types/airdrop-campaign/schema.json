@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "airdrop_campaigns",
+  "info": {
+    "singularName": "airdrop-campaign",
+    "pluralName": "airdrop-campaigns",
+    "displayName": "Airdrop Campaign",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "start_snapshot": {
+      "type": "datetime"
+    },
+    "end_snapshot": {
+      "type": "datetime"
+    },
+    "start_claim": {
+      "type": "datetime"
+    },
+    "end_claim": {
+      "type": "datetime"
+    },
+    "eligibility_date": {
+      "type": "datetime"
+    },
+    "network": {
+      "type": "string",
+      "default": "KAR"
+    },
+    "total_tokens": {
+      "type": "integer"
+    },
+    "total_nft": {
+      "type": "integer"
+    },
+    "decimal": {
+      "type": "integer"
+    },
+    "eligibility_criteria": {
+      "type": "blocks"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "CANCELED"
+      ]
+    },
+    "method": {
+      "type": "string"
+    },
+    "raffle_count": {
+      "type": "integer"
+    },
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    }
+  }
+}
