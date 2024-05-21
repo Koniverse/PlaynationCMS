@@ -827,6 +827,105 @@ export interface PluginSlugifySlug extends Schema.CollectionType {
   };
 }
 
+export interface ApiAirdropCampaignAirdropCampaign
+  extends Schema.CollectionType {
+  collectionName: 'airdrop_campaigns';
+  info: {
+    singularName: 'airdrop-campaign';
+    pluralName: 'airdrop-campaigns';
+    displayName: 'Airdrop Campaign';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    icon: Attribute.Media;
+    start_snapshot: Attribute.DateTime;
+    end_snapshot: Attribute.DateTime;
+    start_claim: Attribute.DateTime;
+    end_claim: Attribute.DateTime;
+    eligibility_date: Attribute.DateTime;
+    network: Attribute.String & Attribute.DefaultTo<'KAR'>;
+    total_tokens: Attribute.Integer;
+    total_nft: Attribute.Integer;
+    decimal: Attribute.Integer;
+    eligibility_criteria: Attribute.Blocks;
+    status: Attribute.Enumeration<['ACTIVE', 'INACTIVE', 'CANCELED']>;
+    method: Attribute.String;
+    raffle_count: Attribute.Integer;
+    start: Attribute.Date;
+    end: Attribute.Date;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::airdrop-campaign.airdrop-campaign',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::airdrop-campaign.airdrop-campaign',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAirdropRecordAirdropRecord extends Schema.CollectionType {
+  collectionName: 'airdrop_records';
+  info: {
+    singularName: 'airdrop-record';
+    pluralName: 'airdrop-records';
+    displayName: 'Airdrop Record';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    campaign_id: Attribute.Relation<
+      'api::airdrop-record.airdrop-record',
+      'oneToOne',
+      'api::airdrop-campaign.airdrop-campaign'
+    >;
+    account_id: Attribute.Integer;
+    amount: Attribute.Integer;
+    network: Attribute.String & Attribute.DefaultTo<'KAR'>;
+    status: Attribute.Enumeration<
+      [
+        'NEW_REGISTRATION',
+        'CHECKING_CONDITIONS',
+        'PASS_CONDITION_CHECK',
+        'ELIGIBLE_FOR_REWARD',
+        'RECEIVED',
+        'NOT_ELIGIBLE_FOR_REWARD',
+        'CANCELED'
+      ]
+    >;
+    snapshot_data: Attribute.RichText;
+    point: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::airdrop-record.airdrop-record',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::airdrop-record.airdrop-record',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAuditLogAuditLog extends Schema.CollectionType {
   collectionName: 'audit_logs';
   info: {
@@ -1072,6 +1171,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::slugify.slug': PluginSlugifySlug;
+      'api::airdrop-campaign.airdrop-campaign': ApiAirdropCampaignAirdropCampaign;
+      'api::airdrop-record.airdrop-record': ApiAirdropRecordAirdropRecord;
       'api::audit-log.audit-log': ApiAuditLogAuditLog;
       'api::game.game': ApiGameGame;
       'api::game-item.game-item': ApiGameItemGameItem;
