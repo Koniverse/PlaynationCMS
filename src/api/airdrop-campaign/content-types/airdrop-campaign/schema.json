@@ -48,9 +48,6 @@
     "total_tokens": {
       "type": "integer"
     },
-    "total_nft": {
-      "type": "integer"
-    },
     "decimal": {
       "type": "integer"
     },
@@ -76,6 +73,9 @@
     },
     "end": {
       "type": "date"
+    },
+    "symbol": {
+      "type": "string"
     }
   }
 }
