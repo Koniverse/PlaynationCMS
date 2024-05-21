@@ -17,12 +17,6 @@ export default factories.createCoreService('api::game-item.game-item', ({strapi}
       // @ts-ignore
       d.gameId = d.game?.id || d.game;
       d.game && delete d.game;
-      // @ts-ignore
-      d.slug = null;
-      if (d.itemGroup > 0 && d.itemGroupLevel > 0) {
-        // @ts-ignore
-        d.slug = `level${d.itemGroupLevel}`;
-      }
       d.createdAt !== undefined && delete d.createdAt;
       d.updatedAt !== undefined && delete d.updatedAt;
       d.publishedAt !== undefined && delete d.publishedAt;
