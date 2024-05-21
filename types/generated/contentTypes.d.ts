@@ -1007,6 +1007,7 @@ export interface ApiTaskTask extends Schema.CollectionType {
       'api::task-category.task-category'
     >;
     active: Attribute.Boolean;
+    onChainType: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
