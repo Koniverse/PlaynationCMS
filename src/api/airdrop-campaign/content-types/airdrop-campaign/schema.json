@@ -75,7 +75,8 @@
       "type": "date"
     },
     "symbol": {
-      "type": "string"
+      "type": "string",
+      "default": "KAR"
     }
   }
 }

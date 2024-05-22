@@ -856,7 +856,7 @@ export interface ApiAirdropCampaignAirdropCampaign
     raffle_count: Attribute.Integer;
     start: Attribute.Date;
     end: Attribute.Date;
-    symbol: Attribute.String;
+    symbol: Attribute.String & Attribute.DefaultTo<'KAR'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
