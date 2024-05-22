@@ -60,7 +60,9 @@
         "ACTIVE",
         "INACTIVE",
         "CANCELED"
-      ]
+      ],
+      "default": "ACTIVE",
+      "required": true
     },
     "method": {
       "type": "string"
@@ -77,6 +79,17 @@
     "symbol": {
       "type": "string",
       "default": "KAR"
+    },
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
