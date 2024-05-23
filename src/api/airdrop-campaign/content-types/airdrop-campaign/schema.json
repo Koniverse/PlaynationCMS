@@ -88,12 +88,22 @@
     "method": {
       "type": "enumeration",
       "enum": [
-        "Raffle"
+        "RAFFLE"
       ],
       "default": "Raffle"
     },
     "eligibility_criteria": {
-      "type": "blocks"
+      "type": "json",
+      "default": {
+        "HOLD_TOKEN": "HOLD_TOKEN",
+        "TOTAL_NFT": "TOTAL_NFT",
+        "TIME_PLAY_GAME": "TIME_PLAY_GAME",
+        "NUMBER_OF_NPS": "NUMBER_OF_NPS",
+        "DURATION": "DURATION",
+        "GAME_PLAY_COUNT": "GAME_PLAY_COUNT",
+        "POINTS_IN_GAME": "POINTS_IN_GAME"
+      },
+      "required": true
     }
   }
 }

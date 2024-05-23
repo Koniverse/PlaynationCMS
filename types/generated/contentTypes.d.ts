@@ -858,8 +858,18 @@ export interface ApiAirdropCampaignAirdropCampaign
     end: Attribute.Date;
     symbol: Attribute.String & Attribute.DefaultTo<'KAR'>;
     banner: Attribute.Media;
-    method: Attribute.Enumeration<['Raffle']> & Attribute.DefaultTo<'Raffle'>;
-    eligibility_criteria: Attribute.Blocks;
+    method: Attribute.Enumeration<['RAFFLE']> & Attribute.DefaultTo<'Raffle'>;
+    eligibility_criteria: Attribute.JSON &
+      Attribute.Required &
+      Attribute.DefaultTo<{
+        HOLD_TOKEN: 'HOLD_TOKEN';
+        TOTAL_NFT: 'TOTAL_NFT';
+        TIME_PLAY_GAME: 'TIME_PLAY_GAME';
+        NUMBER_OF_NPS: 'NUMBER_OF_NPS';
+        DURATION: 'DURATION';
+        GAME_PLAY_COUNT: 'GAME_PLAY_COUNT';
+        POINTS_IN_GAME: 'POINTS_IN_GAME';
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
