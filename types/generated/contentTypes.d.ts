@@ -858,7 +858,7 @@ export interface ApiAirdropCampaignAirdropCampaign
     end: Attribute.Date;
     symbol: Attribute.String & Attribute.DefaultTo<'KAR'>;
     banner: Attribute.Media;
-    method: Attribute.Enumeration<['RAFFLE']> & Attribute.DefaultTo<'Raffle'>;
+    method: Attribute.Enumeration<['RAFFLE']> & Attribute.DefaultTo<'RAFFLE'>;
     eligibility_criteria: Attribute.JSON &
       Attribute.Required &
       Attribute.DefaultTo<{

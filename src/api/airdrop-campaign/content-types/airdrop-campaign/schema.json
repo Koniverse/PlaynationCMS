@@ -90,7 +90,7 @@
       "enum": [
         "RAFFLE"
       ],
-      "default": "Raffle"
+      "default": "RAFFLE"
     },
     "eligibility_criteria": {
       "type": "json",
