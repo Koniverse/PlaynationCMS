@@ -862,13 +862,13 @@ export interface ApiAirdropCampaignAirdropCampaign
     eligibility_criteria: Attribute.JSON &
       Attribute.Required &
       Attribute.DefaultTo<{
-        HOLD_TOKEN: 'HOLD_TOKEN';
-        TOTAL_NFT: 'TOTAL_NFT';
-        TIME_PLAY_GAME: 'TIME_PLAY_GAME';
-        NUMBER_OF_NPS: 'NUMBER_OF_NPS';
-        DURATION: 'DURATION';
-        GAME_PLAY_COUNT: 'GAME_PLAY_COUNT';
-        POINTS_IN_GAME: 'POINTS_IN_GAME';
+        HOLD_TOKEN: 1;
+        TOTAL_NFT: 1;
+        TIME_PLAY_GAME: 1;
+        NUMBER_OF_NPS: 1;
+        DURATION: '2024-05-01';
+        GAME_PLAY_COUNT: 1;
+        POINTS_IN_GAME: 1;
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
