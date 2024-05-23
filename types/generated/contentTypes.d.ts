@@ -850,16 +850,16 @@ export interface ApiAirdropCampaignAirdropCampaign
     network: Attribute.String & Attribute.DefaultTo<'KAR'>;
     total_tokens: Attribute.Integer;
     decimal: Attribute.Integer;
-    eligibility_criteria: Attribute.Blocks;
     status: Attribute.Enumeration<['ACTIVE', 'INACTIVE', 'CANCELED']> &
       Attribute.Required &
       Attribute.DefaultTo<'ACTIVE'>;
-    method: Attribute.String;
     raffle_count: Attribute.Integer;
     start: Attribute.Date;
     end: Attribute.Date;
     symbol: Attribute.String & Attribute.DefaultTo<'KAR'>;
     banner: Attribute.Media;
+    method: Attribute.Enumeration<['Raffle']> & Attribute.DefaultTo<'Raffle'>;
+    eligibility_criteria: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

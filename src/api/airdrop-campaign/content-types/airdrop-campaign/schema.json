@@ -51,9 +51,6 @@
     "decimal": {
       "type": "integer"
     },
-    "eligibility_criteria": {
-      "type": "blocks"
-    },
     "status": {
       "type": "enumeration",
       "enum": [
@@ -63,9 +60,6 @@
       ],
       "default": "ACTIVE",
       "required": true
-    },
-    "method": {
-      "type": "string"
     },
     "raffle_count": {
       "type": "integer"
@@ -90,6 +84,16 @@
         "videos",
         "audios"
       ]
+    },
+    "method": {
+      "type": "enumeration",
+      "enum": [
+        "Raffle"
+      ],
+      "default": "Raffle"
+    },
+    "eligibility_criteria": {
+      "type": "blocks"
     }
   }
 }
