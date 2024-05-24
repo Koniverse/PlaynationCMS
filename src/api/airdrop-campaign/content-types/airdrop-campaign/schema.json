@@ -38,9 +38,6 @@
     "end_claim": {
       "type": "datetime"
     },
-    "eligibility_date": {
-      "type": "datetime"
-    },
     "network": {
       "type": "string",
       "default": "KAR"
@@ -92,17 +89,12 @@
       ],
       "default": "RAFFLE"
     },
-    "eligibility_criteria": {
+    "tokenDistributions": {
       "type": "json",
-      "default": {
-        "HOLD_TOKEN": 1,
-        "TOTAL_NFT": 1,
-        "TIME_PLAY_GAME": 1,
-        "NUMBER_OF_NPS": 1,
-        "DURATION": "2024-05-01",
-        "GAME_PLAY_COUNT": 1,
-        "POINTS_IN_GAME": 1
-      },
+      "required": true
+    },
+    "npsDistributions": {
+      "type": "json",
       "required": true
     }
   }

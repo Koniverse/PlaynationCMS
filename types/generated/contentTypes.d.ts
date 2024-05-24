@@ -846,7 +846,6 @@ export interface ApiAirdropCampaignAirdropCampaign
     end_snapshot: Attribute.DateTime;
     start_claim: Attribute.DateTime;
     end_claim: Attribute.DateTime;
-    eligibility_date: Attribute.DateTime;
     network: Attribute.String & Attribute.DefaultTo<'KAR'>;
     total_tokens: Attribute.Integer;
     decimal: Attribute.Integer;
@@ -859,17 +858,8 @@ export interface ApiAirdropCampaignAirdropCampaign
     symbol: Attribute.String & Attribute.DefaultTo<'KAR'>;
     banner: Attribute.Media;
     method: Attribute.Enumeration<['RAFFLE']> & Attribute.DefaultTo<'RAFFLE'>;
-    eligibility_criteria: Attribute.JSON &
-      Attribute.Required &
-      Attribute.DefaultTo<{
-        HOLD_TOKEN: 1;
-        TOTAL_NFT: 1;
-        TIME_PLAY_GAME: 1;
-        NUMBER_OF_NPS: 1;
-        DURATION: '2024-05-01';
-        GAME_PLAY_COUNT: 1;
-        POINTS_IN_GAME: 1;
-      }>;
+    tokenDistributions: Attribute.JSON & Attribute.Required;
+    npsDistributions: Attribute.JSON & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -921,6 +911,45 @@ export interface ApiAuditLogAuditLog extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::audit-log.audit-log',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEligibilityListEligibilityList
+  extends Schema.CollectionType {
+  collectionName: 'eligibility_lists';
+  info: {
+    singularName: 'eligibility-list';
+    pluralName: 'eligibility-lists';
+    displayName: 'Eligibility List';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    userList: Attribute.JSON;
+    boxCount: Attribute.Integer & Attribute.Required;
+    airdrop_campaign_id: Attribute.Relation<
+      'api::eligibility-list.eligibility-list',
+      'oneToOne',
+      'api::airdrop-campaign.airdrop-campaign'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::eligibility-list.eligibility-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::eligibility-list.eligibility-list',
       'oneToOne',
       'admin::user'
     > &
@@ -1135,6 +1164,7 @@ declare module '@strapi/types' {
       'plugin::slugify.slug': PluginSlugifySlug;
       'api::airdrop-campaign.airdrop-campaign': ApiAirdropCampaignAirdropCampaign;
       'api::audit-log.audit-log': ApiAuditLogAuditLog;
+      'api::eligibility-list.eligibility-list': ApiEligibilityListEligibilityList;
       'api::game.game': ApiGameGame;
       'api::game-item.game-item': ApiGameItemGameItem;
       'api::give-away-point.give-away-point': ApiGiveAwayPointGiveAwayPoint;
