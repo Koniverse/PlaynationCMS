@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eligibility_lists",
+  "info": {
+    "singularName": "eligibility-list",
+    "pluralName": "eligibility-lists",
+    "displayName": "Eligibility List",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "userList": {
+      "type": "json"
+    },
+    "boxCount": {
+      "type": "integer",
+      "required": true
+    },
+    "airdrop_campaign_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::airdrop-campaign.airdrop-campaign"
+    }
+  }
+}
