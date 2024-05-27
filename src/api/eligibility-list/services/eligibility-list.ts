@@ -14,7 +14,7 @@ export default factories.createCoreService(
                     sort: "id:asc",
                     ...params,
                     populate: {
-                       'airdrop_campaign_id':true
+                       'campaign_id':true
                     },
                 }
             );

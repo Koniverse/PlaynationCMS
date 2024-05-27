@@ -23,7 +23,7 @@
       "type": "integer",
       "required": true
     },
-    "airdrop_campaign_id": {
+    "campaign_id": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::airdrop-campaign.airdrop-campaign"

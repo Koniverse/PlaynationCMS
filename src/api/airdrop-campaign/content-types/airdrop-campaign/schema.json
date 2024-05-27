@@ -96,6 +96,9 @@
     "npsDistributions": {
       "type": "json",
       "required": true
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

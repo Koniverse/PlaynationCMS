@@ -860,6 +860,7 @@ export interface ApiAirdropCampaignAirdropCampaign
     method: Attribute.Enumeration<['RAFFLE']> & Attribute.DefaultTo<'RAFFLE'>;
     tokenDistributions: Attribute.JSON & Attribute.Required;
     npsDistributions: Attribute.JSON & Attribute.Required;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -934,7 +935,7 @@ export interface ApiEligibilityListEligibilityList
     name: Attribute.String & Attribute.Required;
     userList: Attribute.JSON;
     boxCount: Attribute.Integer & Attribute.Required;
-    airdrop_campaign_id: Attribute.Relation<
+    campaign_id: Attribute.Relation<
       'api::eligibility-list.eligibility-list',
       'oneToOne',
       'api::airdrop-campaign.airdrop-campaign'
