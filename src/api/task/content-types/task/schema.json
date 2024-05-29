@@ -67,6 +67,9 @@
     },
     "onChainType": {
       "type": "string"
+    },
+    "network": {
+      "type": "string"
     }
   }
 }

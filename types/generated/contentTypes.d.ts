@@ -1010,6 +1010,7 @@ export interface ApiTaskTask extends Schema.CollectionType {
     >;
     active: Attribute.Boolean;
     onChainType: Attribute.String;
+    network: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
