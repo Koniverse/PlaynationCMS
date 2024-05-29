@@ -1,0 +1,104 @@
+{
+  "kind": "collectionType",
+  "collectionName": "airdrop_campaigns",
+  "info": {
+    "singularName": "airdrop-campaign",
+    "pluralName": "airdrop-campaigns",
+    "displayName": "Airdrop Campaign",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "start_snapshot": {
+      "type": "datetime"
+    },
+    "end_snapshot": {
+      "type": "datetime"
+    },
+    "start_claim": {
+      "type": "datetime"
+    },
+    "end_claim": {
+      "type": "datetime"
+    },
+    "network": {
+      "type": "string",
+      "default": "KAR"
+    },
+    "total_tokens": {
+      "type": "integer"
+    },
+    "decimal": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "CANCELED"
+      ],
+      "default": "ACTIVE",
+      "required": true
+    },
+    "raffle_count": {
+      "type": "integer"
+    },
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    },
+    "symbol": {
+      "type": "string",
+      "default": "KAR"
+    },
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "method": {
+      "type": "enumeration",
+      "enum": [
+        "RAFFLE"
+      ],
+      "default": "RAFFLE"
+    },
+    "tokenDistributions": {
+      "type": "json",
+      "required": true
+    },
+    "npsDistributions": {
+      "type": "json",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
