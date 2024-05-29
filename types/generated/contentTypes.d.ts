@@ -940,6 +940,9 @@ export interface ApiEligibilityListEligibilityList
       'oneToOne',
       'api::airdrop-campaign.airdrop-campaign'
     >;
+    type: Attribute.Enumeration<['social', 'invite', 'nps']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'nps'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

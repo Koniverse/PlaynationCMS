@@ -27,6 +27,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::airdrop-campaign.airdrop-campaign"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "social",
+        "invite",
+        "nps"
+      ],
+      "default": "nps",
+      "required": true
     }
   }
 }
