@@ -119,7 +119,7 @@
     "apiID": "airdrop-campaign",
     "label": "Deploy Production API",
     "variant": "secondary",
-    "routerApi": "/api/airdrop/sync",
+    "routerApi": "/api/airdrop/sync-airdrop-campaign",
     "singularName": "api::airdrop-campaign.airdrop-campaign",
     "roles": [
       "publish"
