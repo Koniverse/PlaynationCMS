@@ -138,9 +138,20 @@
     ]
   },
   {
+    "buttonID": "airdrop-campaign-production-api",
+    "apiID": "eligibility-list",
+    "label": "Deploy Production API",
+    "variant": "secondary",
+    "routerApi": "/api/airdrop/sync-airdrop-eligibility",
+    "singularName": "api::eligibility-list.eligibility-list",
+    "roles": [
+      "publish"
+    ]
+  },
+  {
     "buttonID": "eligibility-list-dev-api",
     "apiID": "eligibility-list",
-    "label": "Reward",
+    "label": "Deploy Development API",
     "hostUrl": "http://172.17.0.1:8108",
     "variant": "success-light",
     "routerApi": "/api/airdrop/sync-airdrop-eligibility",
