@@ -37,6 +37,12 @@
       ],
       "default": "nps",
       "required": true
+    },
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
     }
   }
 }
