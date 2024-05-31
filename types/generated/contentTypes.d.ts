@@ -943,6 +943,8 @@ export interface ApiEligibilityListEligibilityList
     type: Attribute.Enumeration<['social', 'invite', 'nps']> &
       Attribute.Required &
       Attribute.DefaultTo<'nps'>;
+    start: Attribute.Date;
+    end: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
