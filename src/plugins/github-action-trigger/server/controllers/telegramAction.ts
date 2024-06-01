@@ -9,7 +9,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
     ctx.body = await strapi.plugin('github-action-trigger').service('telegramAction').getButtons(apiID);
   },
   trigger: async (ctx, next) => {
-    const {buttonID} = ctx.request.body;
-    ctx.body = await strapi.plugin('github-action-trigger').service('telegramAction').trigger(buttonID);
+    const {buttonID, id} = ctx.request.body;
+    ctx.body = await strapi.plugin('github-action-trigger').service('telegramAction').trigger(buttonID, id);
   }
 });

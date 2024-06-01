@@ -13,10 +13,22 @@ export interface GameRankDefinition extends Schema.Component {
   };
 }
 
+export interface TelegramInlineKeyboard extends Schema.Component {
+  collectionName: 'components_telegram_inline_keyboards';
+  info: {
+    displayName: 'Inline Keyboard';
+  };
+  attributes: {
+    text: Attribute.String;
+    url: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'game.rank-definition': GameRankDefinition;
+      'telegram.inline-keyboard': TelegramInlineKeyboard;
     }
   }
 }

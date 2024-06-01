@@ -37,8 +37,8 @@ export default ({ strapi }: { strapi: Strapi }) => ({
   },
   async getButtons(apiID: string) {
     // @ts-ignore
-    const apiActions = await strapi.admin.config.apiActions;
-    const {triggerButtons} = apiActions;
+    const actions = await strapi.admin.config.telegramActions;
+    const {triggerButtons} = actions;
     let enabled = false;
     const requireRoles = await this.getRequireRoles(apiID);
 
@@ -66,10 +66,10 @@ export default ({ strapi }: { strapi: Strapi }) => ({
       buttons
     } as GithubActionEnabledResponse;
   },
-  async trigger(buttonID: string) {
+  async trigger(buttonID: string, id: number) {
     // @ts-ignore
-    const apiActions = await strapi.admin.config.apiActions;
-    const {triggerButtons, apiToken, apiActionUrl} = apiActions;
+    const actions = await strapi.admin.config.telegramActions;
+    const {triggerButtons, apiToken, apiActionUrl, apiActionDevelopmentUrl} = actions;
     let hostUrl = apiActionUrl;
     let executed = false;
 
@@ -83,25 +83,24 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
     if (buttonInfo) {
       executed = true;
-      const {singularName, routerApi} = buttonInfo;
-      let deployType = 'api_deploy_production';
-      if (buttonInfo.hostUrl){
-        hostUrl = buttonInfo.hostUrl;
-        deployType = 'api_deploy_development';
+      const {singularName, routerApi, environment} = buttonInfo;
+      if (environment === 'development') {
+        hostUrl = apiActionDevelopmentUrl;
       }
-      const generalParams = {
-        publicationState: 'live' ,
-        locale: 'en'
+      const contentSend = await strapi.service(singularName).getDataContent(id);
+      const {status, message, data} = contentSend;
+      if (!status) {
+        return {
+          type: 'warning',
+          status: false,
+          message
+        }
       }
-      const contentSend = await strapi.service(singularName).customList(generalParams);
       try {
         const url = `${hostUrl}${routerApi}`;
-        console.log('url', url)
-        await axios.post(url, {
-          data: contentSend
-        }, {headers: getHeaders(apiToken)});
+        await axios.post(url, data, {headers: getHeaders(apiToken)});
 
-        await strapi.services['api::audit-log.audit-log'].addAuditLogDeploy(buttonInfo, deployType);
+        await strapi.services['api::audit-log.audit-log'].addAuditLogSendNotification(buttonInfo, id, environment);
         return {
             type: 'success',
             status: true,

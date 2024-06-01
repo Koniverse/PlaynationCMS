@@ -1,5 +1,6 @@
 import triggerButtons from './data/triggerButtons.json';
 import triggerApiButtons from './data/triggerApiButtons.json';
+import triggerTelegramButtons from './data/triggerTelegramButtons.json';
 export default ({ env }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
@@ -24,6 +25,12 @@ export default ({ env }) => ({
   apiActions: {
     triggerButtons: triggerApiButtons,
     apiActionUrl: env('API_ACTION_URL'),
+    apiToken: env('API_TOKEN'),
+  },
+  telegramActions: {
+    triggerButtons: triggerTelegramButtons,
+    apiActionUrl: env('API_ACTION_URL'),
+    apiActionDevelopmentUrl: env('API_ACTION_DEVELOPMENT_URL'),
     apiToken: env('API_TOKEN'),
   }
 });

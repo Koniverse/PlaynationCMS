@@ -1,0 +1,26 @@
+[
+  {
+    "buttonID": "telegram-notification-production-api",
+    "apiID": "telegram-notification",
+    "label": "Send Notification Production API",
+    "variant": "secondary",
+    "environment": "production",
+    "routerApi": "/api/telegram/send-photo",
+    "singularName": "api::telegram-notification.telegram-notification",
+    "roles": [
+      "publish"
+    ]
+  },
+  {
+    "buttonID": "telegram-notification-dev-api",
+    "apiID": "telegram-notification",
+    "label": "Send Notification Development API",
+    "environment": "development",
+    "variant": "success-light",
+    "routerApi": "/api/telegram/send-photo",
+    "singularName": "api::telegram-notification.telegram-notification",
+    "roles": [
+      "create"
+    ]
+  }
+]

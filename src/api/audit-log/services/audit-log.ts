@@ -32,6 +32,36 @@ export default factories.createCoreService('api::audit-log.audit-log', ({strapi}
     }
     return _fromData;
   },
+  async addAuditLogSendNotification(buttonInfo: TriggerButtonInfo, id: number, environment: string = '') {
+    const {buttonID, apiID} = buttonInfo;
+    const user = this.getUserName();
+    if (!user) {
+      return;
+    }
+    const singularName = `api::${apiID}.${apiID}`;
+    const isProduction = environment === 'production';
+    let action = isProduction ? 'send_notification_production' : 'send_notification_development';
+    // @ts-ignore
+    const toData = await strapi.service(singularName).getDataContent(id);
+    const {status, data} = toData;
+    if (!status) {
+      return;
+    }
+    const auditLog = {
+      action: action,
+      contentType: apiID,
+      fromData: {},
+      toData: data,
+      updatedByUserName: user.username,
+      updatedById: user.id,
+      contentId: id,
+      buttonID: buttonID
+    }
+    // axios
+    await strapi.entityService.create('api::audit-log.audit-log', {
+      data: auditLog
+    });
+  },
   async addAuditLogDeploy(buttonInfo: TriggerButtonInfo, deployType: string = '') {
     const {buttonID, apiID} = buttonInfo;
     // @ts-ignore

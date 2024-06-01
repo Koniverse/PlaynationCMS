@@ -1151,6 +1151,44 @@ export interface ApiTaskCategoryTaskCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiTelegramNotificationTelegramNotification
+  extends Schema.CollectionType {
+  collectionName: 'telegram_notifications';
+  info: {
+    singularName: 'telegram-notification';
+    pluralName: 'telegram-notifications';
+    displayName: 'Telegram Notifications';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    photo: Attribute.Media & Attribute.Required;
+    parse_mode: Attribute.Enumeration<['html']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'html'>;
+    reply_markup: Attribute.Component<'telegram.inline-keyboard', true>;
+    Name: Attribute.String;
+    caption: Attribute.Text & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::telegram-notification.telegram-notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::telegram-notification.telegram-notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1178,6 +1216,7 @@ declare module '@strapi/types' {
       'api::give-away-point.give-away-point': ApiGiveAwayPointGiveAwayPoint;
       'api::task.task': ApiTaskTask;
       'api::task-category.task-category': ApiTaskCategoryTaskCategory;
+      'api::telegram-notification.telegram-notification': ApiTelegramNotificationTelegramNotification;
     }
   }
 }
