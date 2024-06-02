@@ -71,7 +71,7 @@ const Index = ({}) => {
                     validateStatus: (status: number) => status === 200,
                 });
                 const {enabled, buttons, lastTriggered} = response.data;
-                if (lastTriggered){
+                if (lastTriggered !== null) {
                     setLastTime(formatDateFully(new Date(lastTriggered)));
                 }
 
@@ -126,11 +126,6 @@ const Index = ({}) => {
                 <DialogFooter startAction={<Button onClick={() => setIsVisible(false)} variant="tertiary">
                     Cancel
                 </Button>} endAction={<Button variant="danger-light" onClick={() =>  {
-                     console.log(
-                    'handleSendAction',
-                    modifiedData,
-                    buttonActionId
-                )
                     handleSendAction().then(() => setIsVisible(false));
                 }}>
                     Confirm
@@ -138,7 +133,7 @@ const Index = ({}) => {
             </Dialog>
             <Box
                 as="aside"
-                aria-labelledby="additional-information"
+                aria-labelledby="telegram-additional-information"
                 background="neutral0"
                 borderColor="neutral150"
                 hasRadius
@@ -150,7 +145,7 @@ const Index = ({}) => {
             >
                 <Flex direction="column" alignItems="stretch" gap={4}>
                     <Flex direction="column" alignItems="stretch" gap={2}>
-                        <Typography variant="sigma" textColor="neutral600" id="additional-information">
+                        <Typography variant="sigma" textColor="neutral600" id="telegram-additional-information">
                             Telegram Action
                         </Typography>
 
@@ -161,7 +156,7 @@ const Index = ({}) => {
                     <Flex direction="column" alignItems="stretch" gap={4}>
                         <Flex direction="column" alignItems="stretch" gap={2} as="dl">
                             <KeyValuePair
-                                label={'Last build Production'}
+                                label={'Last Time Build Production'}
                                 value={lastTime ?? 'No build yet'}
                             />
                         </Flex>
