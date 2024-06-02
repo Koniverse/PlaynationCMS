@@ -2,7 +2,7 @@
   {
     "buttonID": "telegram-notification-production-api",
     "apiID": "telegram-notification",
-    "label": "Send Notification Production API",
+    "label": "Send Production",
     "variant": "secondary",
     "environment": "production",
     "routerApi": "/api/telegram/send-photo",
@@ -14,7 +14,7 @@
   {
     "buttonID": "telegram-notification-dev-api",
     "apiID": "telegram-notification",
-    "label": "Send Notification Development API",
+    "label": "Send Development",
     "environment": "development",
     "variant": "success-light",
     "routerApi": "/api/telegram/send-photo",
