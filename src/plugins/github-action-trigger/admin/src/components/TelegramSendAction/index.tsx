@@ -129,7 +129,7 @@ const Index = ({}) => {
                     <Flex direction="column" alignItems="center" gap={2}>
                         <Flex justifyContent="center">
                             <Typography id="confirm-description">Are you sure to send telegram
-                                notifications??</Typography>
+                                notifications?</Typography>
                         </Flex>
                     </Flex>
                 </DialogBody>
