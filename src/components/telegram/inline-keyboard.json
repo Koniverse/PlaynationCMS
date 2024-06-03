@@ -1,15 +1,24 @@
 {
   "collectionName": "components_telegram_inline_keyboards",
   "info": {
-    "displayName": "Inline Keyboard"
+    "displayName": "Inline Keyboard",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "text": {
       "type": "string"
     },
-    "url": {
-      "type": "string"
+    "screen": {
+      "type": "enumeration",
+      "enum": [
+        "/home/mission",
+        "/home/games",
+        "/home/leaderboard",
+        "/home/tokens",
+        "/home/airdrop",
+        "/home/invite"
+      ]
     }
   }
 }

@@ -3,10 +3,6 @@
  */
 
 import {factories} from '@strapi/strapi';
-function isLink(input: string): boolean {
-  const regex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/;
-  return regex.test(input);
-}
 export default factories.createCoreService(
     "api::telegram-notification.telegram-notification",
     ({strapi}) => ({
@@ -47,20 +43,15 @@ export default factories.createCoreService(
                 },
 
             };
+            // @ts-ignore
+            const botUrl = strapi.admin.config.telegramActions.botUrl;
             if (data.reply_markup) {
 
-                const isAllLink = data.reply_markup.every((reply) => {
-                    return isLink(reply.url);
-                })
-                if (!isAllLink){
-                    response.message = "All buttons url must be a link";
-                    return response;
-                }
                 const buttons = data.reply_markup.map((reply) => {
                     return {
                         text: reply.text,
                         web_app: {
-                            url: reply.url,
+                            url: `${botUrl}${reply.screen}`,
                         },
                     };
                 });

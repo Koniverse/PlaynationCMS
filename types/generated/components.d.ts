@@ -17,10 +17,20 @@ export interface TelegramInlineKeyboard extends Schema.Component {
   collectionName: 'components_telegram_inline_keyboards';
   info: {
     displayName: 'Inline Keyboard';
+    description: '';
   };
   attributes: {
     text: Attribute.String;
-    url: Attribute.String;
+    screen: Attribute.Enumeration<
+      [
+        '/home/mission',
+        '/home/games',
+        '/home/leaderboard',
+        '/home/tokens',
+        '/home/airdrop',
+        '/home/invite'
+      ]
+    >;
   };
 }
 
