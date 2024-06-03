@@ -83,15 +83,24 @@ const Index = ({}) => {
     }, [contentType?.apiID]);
 
     const handleClick = useCallback((buttonID: string) => async () => {
-            setButtonActionId(buttonID);
-            setIsVisible(true);
+            const id = modifiedData.id;
+            if (id) {
+                setButtonActionId(buttonID);
+                setIsVisible(true);
+            } else showNotification('Please save the data before send notifications', 'warning');
         }
         , []);
 
-    const handleSendAction = useCallback( async () =>  {
+    const handleSendAction = useCallback(async () => {
+
+            const id = modifiedData.id;
+            if (!id) {
+                setIsVisible(false);
+                showNotification('Please save the data before send notifications', 'warning');
+                return;
+            }
             try {
                 setLoading(true);
-                const id = modifiedData.id;
                 const response = await post(`github-action-trigger/telegram-trigger`, {buttonID: buttonActionId, id}, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -119,13 +128,14 @@ const Index = ({}) => {
                 <DialogBody>
                     <Flex direction="column" alignItems="center" gap={2}>
                         <Flex justifyContent="center">
-                            <Typography id="confirm-description">Are you sure to send telegram notifications??</Typography>
+                            <Typography id="confirm-description">Are you sure to send telegram
+                                notifications??</Typography>
                         </Flex>
                     </Flex>
                 </DialogBody>
                 <DialogFooter startAction={<Button onClick={() => setIsVisible(false)} variant="tertiary">
                     Cancel
-                </Button>} endAction={<Button variant="danger-light" onClick={() =>  {
+                </Button>} endAction={<Button variant="danger-light" onClick={() => {
                     handleSendAction().then(() => setIsVisible(false));
                 }}>
                     Confirm
