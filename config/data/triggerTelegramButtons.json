@@ -1,14 +1,15 @@
 [
   {
-    "buttonID": "telegram-notification-production-api",
+    "buttonID": "telegram-notification-dev-api",
     "apiID": "telegram-notification",
     "label": "Send Bot Booka",
-    "variant": "secondary",
-    "environment": "production",
+    "environment": "development",
+    "variant": "success-light",
     "routerApi": "/api/telegram/send-photo",
     "singularName": "api::telegram-notification.telegram-notification",
     "roles": [
-      "publish"
+      "create"
     ]
   }
 ]
+
