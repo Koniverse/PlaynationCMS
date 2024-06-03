@@ -1105,8 +1105,8 @@ export interface ApiTaskTask extends Schema.CollectionType {
       'api::task-category.task-category'
     >;
     active: Attribute.Boolean;
-    onChainType: Attribute.String;
-    network: Attribute.String;
+    onChainType: Attribute.Enumeration<['attendance']>;
+    network: Attribute.Enumeration<['karura', 'acala', 'alephTest']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
