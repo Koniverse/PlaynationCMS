@@ -861,6 +861,7 @@ export interface ApiAirdropCampaignAirdropCampaign
     tokenDistributions: Attribute.JSON & Attribute.Required;
     npsDistributions: Attribute.JSON & Attribute.Required;
     description: Attribute.Text;
+    shortDescription: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

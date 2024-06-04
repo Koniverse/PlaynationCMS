@@ -99,6 +99,9 @@
     },
     "description": {
       "type": "text"
+    },
+    "shortDescription": {
+      "type": "text"
     }
   }
 }
