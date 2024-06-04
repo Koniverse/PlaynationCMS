@@ -51,7 +51,7 @@ export default factories.createCoreService(
                     return {
                         text: reply.text,
                         web_app: {
-                            url: `${botUrl}${reply.screen}`,
+                            url: `${botUrl}${reply.screen ?? ''}`,
                         },
                     };
                 });
