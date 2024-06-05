@@ -1106,7 +1106,9 @@ export interface ApiTaskTask extends Schema.CollectionType {
     >;
     active: Attribute.Boolean;
     onChainType: Attribute.Enumeration<['attendance']>;
-    network: Attribute.Enumeration<['karura', 'acala', 'alephTest']>;
+    network: Attribute.Enumeration<
+      ['karura', 'acala', 'kusama', 'polkadot', 'alephTest']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
