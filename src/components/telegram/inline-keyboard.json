@@ -7,7 +7,8 @@
   "options": {},
   "attributes": {
     "text": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "screen": {
       "type": "enumeration",
