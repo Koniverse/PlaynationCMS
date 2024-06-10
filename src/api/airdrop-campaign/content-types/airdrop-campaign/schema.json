@@ -102,6 +102,10 @@
     },
     "shortDescription": {
       "type": "text"
+    },
+    "token_slug": {
+      "type": "string",
+      "default": "karura_evm-NATIVE-KAR"
     }
   }
 }

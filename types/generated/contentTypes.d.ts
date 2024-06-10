@@ -862,6 +862,7 @@ export interface ApiAirdropCampaignAirdropCampaign
     npsDistributions: Attribute.JSON & Attribute.Required;
     description: Attribute.Text;
     shortDescription: Attribute.Text;
+    token_slug: Attribute.String & Attribute.DefaultTo<'karura_evm-NATIVE-KAR'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
