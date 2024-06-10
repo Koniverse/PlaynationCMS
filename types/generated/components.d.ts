@@ -20,7 +20,7 @@ export interface TelegramInlineKeyboard extends Schema.Component {
     description: '';
   };
   attributes: {
-    text: Attribute.String;
+    text: Attribute.String & Attribute.Required;
     screen: Attribute.Enumeration<
       [
         '/home/mission',

@@ -1,9 +1,21 @@
 [
   {
+    "buttonID": "telegram-notification-production-api",
+    "apiID": "telegram-notification",
+    "label": "Send Bot Playnation",
+    "variant": "secondary",
+    "environment": "production",
+    "routerApi": "/api/telegram/send-photo",
+    "singularName": "api::telegram-notification.telegram-notification",
+    "roles": [
+      "publish"
+    ]
+  },
+  {
     "buttonID": "telegram-notification-dev-api",
     "apiID": "telegram-notification",
     "label": "Send Bot Booka",
-    "environment": "production",
+    "environment": "development",
     "variant": "success-light",
     "routerApi": "/api/telegram/send-photo",
     "singularName": "api::telegram-notification.telegram-notification",

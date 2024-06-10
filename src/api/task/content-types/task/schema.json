@@ -76,6 +76,8 @@
       "enum": [
         "karura",
         "acala",
+        "kusama",
+        "polkadot",
         "alephTest"
       ]
     }
