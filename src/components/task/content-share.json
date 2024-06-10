@@ -21,10 +21,6 @@
     "end_time": {
       "type": "datetime",
       "required": true
-    },
-    "content_no_template": {
-      "type": "text",
-      "required": true
     }
   }
 }

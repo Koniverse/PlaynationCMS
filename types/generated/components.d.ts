@@ -24,7 +24,6 @@ export interface TaskContentShare extends Schema.Component {
     url: Attribute.String & Attribute.Required;
     start_time: Attribute.DateTime & Attribute.Required;
     end_time: Attribute.DateTime & Attribute.Required;
-    content_no_template: Attribute.Text & Attribute.Required;
   };
 }
 
