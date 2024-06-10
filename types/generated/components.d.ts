@@ -13,6 +13,21 @@ export interface GameRankDefinition extends Schema.Component {
   };
 }
 
+export interface TaskContentShare extends Schema.Component {
+  collectionName: 'components_task_content_shares';
+  info: {
+    displayName: 'Content Share';
+    description: '';
+  };
+  attributes: {
+    content: Attribute.Text & Attribute.Required;
+    url: Attribute.String & Attribute.Required;
+    start_time: Attribute.DateTime & Attribute.Required;
+    end_time: Attribute.DateTime & Attribute.Required;
+    content_no_template: Attribute.Text & Attribute.Required;
+  };
+}
+
 export interface TelegramInlineKeyboard extends Schema.Component {
   collectionName: 'components_telegram_inline_keyboards';
   info: {
@@ -38,6 +53,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'game.rank-definition': GameRankDefinition;
+      'task.content-share': TaskContentShare;
       'telegram.inline-keyboard': TelegramInlineKeyboard;
     }
   }

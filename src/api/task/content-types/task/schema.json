@@ -80,6 +80,11 @@
         "polkadot",
         "alephTest"
       ]
+    },
+    "share_leaderboard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "task.content-share"
     }
   }
 }
