@@ -827,6 +827,39 @@ export interface PluginSlugifySlug extends Schema.CollectionType {
   };
 }
 
+export interface ApiAccountBanedAccountBaned extends Schema.CollectionType {
+  collectionName: 'account_baneds';
+  info: {
+    singularName: 'account-baned';
+    pluralName: 'account-baneds';
+    displayName: 'Account Baned';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    accountIds: Attribute.JSON;
+    isEnabled: Attribute.Boolean & Attribute.DefaultTo<true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::account-baned.account-baned',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::account-baned.account-baned',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAirdropCampaignAirdropCampaign
   extends Schema.CollectionType {
   collectionName: 'airdrop_campaigns';
@@ -1212,6 +1245,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::slugify.slug': PluginSlugifySlug;
+      'api::account-baned.account-baned': ApiAccountBanedAccountBaned;
       'api::airdrop-campaign.airdrop-campaign': ApiAirdropCampaignAirdropCampaign;
       'api::audit-log.audit-log': ApiAuditLogAuditLog;
       'api::eligibility-list.eligibility-list': ApiEligibilityListEligibilityList;

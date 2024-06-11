@@ -159,5 +159,17 @@
     "roles": [
       "create"
     ]
+  },
+  {
+    "buttonID": "account-baned-dev-api",
+    "apiID": "account-baned",
+    "label": "Deploy Development API",
+    "hostUrl": "http://172.17.0.1:8108",
+    "variant": "success-light",
+    "routerApi": "/api/account/sync-banned-account",
+    "singularName": "api::account-baned.account-baned",
+    "roles": [
+      "create"
+    ]
   }
 ]
