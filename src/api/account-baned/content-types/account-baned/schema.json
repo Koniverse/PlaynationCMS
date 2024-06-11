@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "account_baneds",
+  "info": {
+    "singularName": "account-baned",
+    "pluralName": "account-baneds",
+    "displayName": "Account Baned",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "accountIds": {
+      "type": "json"
+    },
+    "isEnabled": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
