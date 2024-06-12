@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_task_content_shares",
+  "info": {
+    "displayName": "Content Share",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "start_time": {
+      "type": "datetime",
+      "required": true
+    },
+    "end_time": {
+      "type": "datetime",
+      "required": true
+    }
+  }
+}

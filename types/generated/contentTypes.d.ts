@@ -1144,6 +1144,7 @@ export interface ApiTaskTask extends Schema.CollectionType {
     network: Attribute.Enumeration<
       ['karura', 'acala', 'kusama', 'polkadot', 'alephTest']
     >;
+    share_leaderboard: Attribute.Component<'task.content-share'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

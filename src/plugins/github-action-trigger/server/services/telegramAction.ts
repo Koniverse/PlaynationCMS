@@ -79,8 +79,9 @@ export default ({strapi}: { strapi: Strapi }) => ({
     async trigger(buttonID: string, id: number) {
         // @ts-ignore
         const actions = await strapi.admin.config.telegramActions;
-        const {triggerButtons, apiToken, apiActionUrl, apiActionDevelopmentUrl} = actions;
+        const {triggerButtons, apiToken, apiActionUrl, apiActionDevelopmentUrl, botDevelopmentUrl, botUrl} = actions;
         let hostUrl = apiActionUrl;
+        let webappUrl = botUrl;
         let executed = false;
 
         const buttonInfo = triggerButtons.find((button) => button.buttonID === buttonID);
@@ -98,8 +99,9 @@ export default ({strapi}: { strapi: Strapi }) => ({
             if (environment === 'development') {
                 hostUrl = apiActionDevelopmentUrl;
                 isProduction = false;
+                webappUrl = botDevelopmentUrl;
             }
-            const contentSend = await strapi.service(singularName).getDataContent(id);
+            const contentSend = await strapi.service(singularName).getDataContent(id, webappUrl);
             const {status, message, data} = contentSend;
             if (!status) {
                 return {

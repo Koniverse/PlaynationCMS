@@ -6,7 +6,7 @@ import {factories} from '@strapi/strapi';
 export default factories.createCoreService(
     "api::telegram-notification.telegram-notification",
     ({strapi}) => ({
-        async getDataContent(id: number) {
+        async getDataContent(id: number, botUrl:string) {
             // const id = 1;
             const data = await strapi.entityService.findOne(
                 "api::telegram-notification.telegram-notification", id,
@@ -43,8 +43,6 @@ export default factories.createCoreService(
                 },
 
             };
-            // @ts-ignore
-            const botUrl = strapi.admin.config.telegramActions.botUrl;
             if (data.reply_markup) {
 
                 const buttons = data.reply_markup.map((reply) => {
