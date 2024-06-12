@@ -172,7 +172,7 @@
     "apiID": "account-baned",
     "label": "Deploy Production API",
     "environment": "production",
-    "variant": "success-light",
+    "variant": "secondary",
     "routerApi": "/api/account/sync-banned-account",
     "singularName": "api::account-baned.account-baned",
     "roles": [
