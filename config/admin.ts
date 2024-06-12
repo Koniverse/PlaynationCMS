@@ -25,6 +25,7 @@ export default ({ env }) => ({
   apiActions: {
     triggerButtons: triggerApiButtons,
     apiActionUrl: env('API_ACTION_URL'),
+    apiActionDevelopmentUrl: env('API_ACTION_DEVELOPMENT_URL'),
     apiToken: env('API_TOKEN'),
   },
   telegramActions: {

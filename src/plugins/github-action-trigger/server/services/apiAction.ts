@@ -69,7 +69,8 @@ export default ({ strapi }: { strapi: Strapi }) => ({
   async trigger(buttonID: string) {
     // @ts-ignore
     const apiActions = await strapi.admin.config.apiActions;
-    const {triggerButtons, apiToken, apiActionUrl} = apiActions;
+    const {triggerButtons, apiToken, apiActionUrl, apiActionDevelopmentUrl} = apiActions;
+
     let hostUrl = apiActionUrl;
     let executed = false;
 
@@ -83,10 +84,10 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
     if (buttonInfo) {
       executed = true;
-      const {singularName, routerApi} = buttonInfo;
+      const {singularName, routerApi, environment} = buttonInfo;
       let deployType = 'api_deploy_production';
-      if (buttonInfo.hostUrl){
-        hostUrl = buttonInfo.hostUrl;
+      if (environment === 'development') {
+        hostUrl = apiActionDevelopmentUrl;
         deployType = 'api_deploy_development';
       }
       const generalParams = {
