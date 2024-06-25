@@ -1145,6 +1145,9 @@ export interface ApiTaskTask extends Schema.CollectionType {
       ['karura', 'acala', 'kusama', 'polkadot', 'alephTest']
     >;
     share_leaderboard: Attribute.Component<'task.content-share'>;
+    zealyId: Attribute.String;
+    zealyType: Attribute.Enumeration<['sync', 'normal']> &
+      Attribute.DefaultTo<'normal'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

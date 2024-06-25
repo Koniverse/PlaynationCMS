@@ -85,6 +85,17 @@
       "type": "component",
       "repeatable": false,
       "component": "task.content-share"
+    },
+    "zealyId": {
+      "type": "string"
+    },
+    "zealyType": {
+      "type": "enumeration",
+      "enum": [
+        "sync",
+        "normal"
+      ],
+      "default": "normal"
     }
   }
 }
