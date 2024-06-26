@@ -7,6 +7,7 @@ export default factories.createCoreService(
     "api::telegram-notification.telegram-notification",
     ({strapi}) => ({
         async getDataContent(id: number, botUrl:string) {
+            console.log('getDataContent', botUrl)
             // const id = 1;
             const data = await strapi.entityService.findOne(
                 "api::telegram-notification.telegram-notification", id,

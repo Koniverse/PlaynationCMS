@@ -32,7 +32,7 @@ export default factories.createCoreService('api::audit-log.audit-log', ({strapi}
     }
     return _fromData;
   },
-  async addAuditLogSendNotification(buttonInfo: TriggerButtonInfo, id: number, environment: string = '') {
+  async addAuditLogSendNotification(buttonInfo: TriggerButtonInfo, id: number, toData: any, environment: string = '') {
     const {buttonID, apiID} = buttonInfo;
     const user = this.getUserName();
     if (!user) {
@@ -41,8 +41,6 @@ export default factories.createCoreService('api::audit-log.audit-log', ({strapi}
     const singularName = `api::${apiID}.${apiID}`;
     const isProduction = environment === 'production';
     let action = isProduction ? 'send_notification_production' : 'send_notification_development';
-    // @ts-ignore
-    const toData = await strapi.service(singularName).getDataContent(id);
     const {status, data} = toData;
     if (!status) {
       return;

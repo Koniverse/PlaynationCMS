@@ -114,7 +114,7 @@ export default ({strapi}: { strapi: Strapi }) => ({
                 const url = `${hostUrl}${routerApi}`;
                 await axios.post(url, data, {headers: getHeaders(apiToken)});
 
-                await strapi.services['api::audit-log.audit-log'].addAuditLogSendNotification(buttonInfo, id, environment);
+                await strapi.services['api::audit-log.audit-log'].addAuditLogSendNotification(buttonInfo, id, contentSend, environment);
                 return {
                     type: 'success',
                     status: true,
