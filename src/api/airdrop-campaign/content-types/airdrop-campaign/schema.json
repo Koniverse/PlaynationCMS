@@ -106,6 +106,11 @@
     "token_slug": {
       "type": "string",
       "default": "karura_evm-NATIVE-KAR"
+    },
+    "share": {
+      "type": "component",
+      "repeatable": false,
+      "component": "airdrop-campaign.share"
     }
   }
 }

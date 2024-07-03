@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_airdrop_campaign_shares",
+  "info": {
+    "displayName": "Share",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "text"
+    },
+    "url_share": {
+      "type": "string"
+    },
+    "hashtags": {
+      "type": "string"
+    },
+    "content_not_show_point": {
+      "type": "text"
+    },
+    "raffle_content": {
+      "type": "text"
+    },
+    "raffle_content_not_show_point": {
+      "type": "text"
+    },
+    "raffle_url_share": {
+      "type": "string"
+    },
+    "raffle_hashtags": {
+      "type": "string"
+    },
+    "url_telegram": {
+      "type": "string"
+    },
+    "url_website": {
+      "type": "string"
+    },
+    "url_twitter": {
+      "type": "string"
+    }
+  }
+}
