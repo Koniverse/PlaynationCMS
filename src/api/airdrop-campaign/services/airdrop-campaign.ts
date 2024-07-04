@@ -15,6 +15,7 @@ export default factories.createCoreService(
           populate: {
             icon: true,
             banner: true,
+            share: true,
           },
           ...params,
         }
