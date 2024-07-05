@@ -86,16 +86,20 @@
       "repeatable": false,
       "component": "task.content-share"
     },
-    "zealyId": {
+    "airlyftId": {
       "type": "string"
     },
-    "zealyType": {
+    "airlyftType": {
       "type": "enumeration",
       "enum": [
+        "normal",
         "sync",
-        "normal"
+        "telegram-sync"
       ],
       "default": "normal"
+    },
+    "airlyftEventId": {
+      "type": "string"
     }
   }
 }
