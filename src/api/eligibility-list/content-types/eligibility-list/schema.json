@@ -23,6 +23,12 @@
       "type": "integer",
       "required": true
     },
+    "boxPrice": {
+      "type": "integer"
+    },
+    "boxLimit": {
+      "type": "integer"
+    },
     "campaign_id": {
       "type": "relation",
       "relation": "oneToOne",

@@ -971,6 +971,8 @@ export interface ApiEligibilityListEligibilityList
     name: Attribute.String & Attribute.Required;
     userList: Attribute.JSON;
     boxCount: Attribute.Integer & Attribute.Required;
+    boxPrice: Attribute.Integer;
+    boxLimit: Attribute.Integer;
     campaign_id: Attribute.Relation<
       'api::eligibility-list.eligibility-list',
       'oneToOne',
