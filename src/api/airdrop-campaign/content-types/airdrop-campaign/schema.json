@@ -111,6 +111,9 @@
       "type": "component",
       "repeatable": false,
       "component": "airdrop-campaign.share"
+    },
+    "conditionDescription": {
+      "type": "text"
     }
   }
 }

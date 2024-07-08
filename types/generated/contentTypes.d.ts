@@ -897,6 +897,7 @@ export interface ApiAirdropCampaignAirdropCampaign
     shortDescription: Attribute.Text;
     token_slug: Attribute.String & Attribute.DefaultTo<'karura_evm-NATIVE-KAR'>;
     share: Attribute.Component<'airdrop-campaign.share'>;
+    conditionDescription: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
