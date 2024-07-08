@@ -38,6 +38,9 @@
     },
     "url_twitter": {
       "type": "string"
+    },
+    "url_discord": {
+      "type": "string"
     }
   }
 }

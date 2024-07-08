@@ -18,6 +18,7 @@ export interface AirdropCampaignShare extends Schema.Component {
     url_telegram: Attribute.String;
     url_website: Attribute.String;
     url_twitter: Attribute.String;
+    url_discord: Attribute.String;
   };
 }
 
