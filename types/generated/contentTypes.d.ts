@@ -1153,6 +1153,7 @@ export interface ApiTaskTask extends Schema.CollectionType {
     airlyftType: Attribute.Enumeration<['normal', 'sync', 'telegram-sync']> &
       Attribute.DefaultTo<'normal'>;
     airlyftEventId: Attribute.String;
+    airlyftWidgetId: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

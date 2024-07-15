@@ -101,6 +101,9 @@
     },
     "airlyftEventId": {
       "type": "string"
+    },
+    "airlyftWidgetId": {
+      "type": "string"
     }
   }
 }
