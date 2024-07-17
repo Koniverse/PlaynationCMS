@@ -35,6 +35,20 @@ export interface GameRankDefinition extends Schema.Component {
   };
 }
 
+export interface TaskAchievement extends Schema.Component {
+  collectionName: 'components_task_achievements';
+  info: {
+    displayName: 'Achievement';
+    description: '';
+  };
+  attributes: {
+    from_date: Attribute.DateTime;
+    to_date: Attribute.DateTime;
+    value: Attribute.Integer;
+    type: Attribute.Enumeration<['game_count', 'game_point', 'referral_count']>;
+  };
+}
+
 export interface TaskContentShare extends Schema.Component {
   collectionName: 'components_task_content_shares';
   info: {
@@ -75,6 +89,7 @@ declare module '@strapi/types' {
     export interface Components {
       'airdrop-campaign.share': AirdropCampaignShare;
       'game.rank-definition': GameRankDefinition;
+      'task.achievement': TaskAchievement;
       'task.content-share': TaskContentShare;
       'telegram.inline-keyboard': TelegramInlineKeyboard;
     }

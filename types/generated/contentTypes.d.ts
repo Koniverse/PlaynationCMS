@@ -1154,6 +1154,7 @@ export interface ApiTaskTask extends Schema.CollectionType {
       Attribute.DefaultTo<'normal'>;
     airlyftEventId: Attribute.String;
     airlyftWidgetId: Attribute.String;
+    achievement: Attribute.Component<'task.achievement'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

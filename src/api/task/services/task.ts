@@ -12,7 +12,8 @@ export default factories.createCoreService('api::task.task', ({strapi}) => ({
         'game': true,
         'icon': true,
         'task_category': true,
-        'share_leaderboard': true
+        'share_leaderboard': true,
+        'achievement': true
       },
       ...params
     });

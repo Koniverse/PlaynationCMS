@@ -104,6 +104,11 @@
     },
     "airlyftWidgetId": {
       "type": "string"
+    },
+    "achievement": {
+      "type": "component",
+      "repeatable": false,
+      "component": "task.achievement"
     }
   }
 }
