@@ -71,6 +71,9 @@
     },
     "endTime": {
       "type": "datetime"
+    },
+    "pointConversionRate": {
+      "type": "float"
     }
   }
 }

@@ -1028,6 +1028,7 @@ export interface ApiGameGame extends Schema.CollectionType {
     active: Attribute.Boolean;
     startTime: Attribute.DateTime;
     endTime: Attribute.DateTime;
+    pointConversionRate: Attribute.Float;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
