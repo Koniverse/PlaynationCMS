@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_task_achievements",
+  "info": {
+    "displayName": "Achievement",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "from_date": {
+      "type": "datetime"
+    },
+    "to_date": {
+      "type": "datetime"
+    },
+    "value": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "game_count",
+        "game_point",
+        "referral_count"
+      ]
+    }
+  }
+}
