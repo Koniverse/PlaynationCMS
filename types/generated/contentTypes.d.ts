@@ -1029,6 +1029,7 @@ export interface ApiGameGame extends Schema.CollectionType {
     startTime: Attribute.DateTime;
     endTime: Attribute.DateTime;
     pointConversionRate: Attribute.Float;
+    gameType: Attribute.Enumeration<['casual', 'farming']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
