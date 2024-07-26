@@ -114,6 +114,11 @@
     },
     "conditionDescription": {
       "type": "text"
+    },
+    "leaderboards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "leader-board.share"
     }
   }
 }

@@ -190,6 +190,30 @@
     "roles": [
       "create"
     ]
+  },
+  {
+    "buttonID": "config-production-api",
+    "apiID": "config",
+    "label": "Deploy Production API",
+    "environment": "production",
+    "variant": "secondary",
+    "routerApi": "/api/config/sync",
+    "singularName": "api::config.config",
+    "roles": [
+      "create"
+    ]
+  },
+  {
+    "buttonID": "config-dev-api",
+    "apiID": "config",
+    "label": "Deploy Development API",
+    "environment": "development",
+    "variant": "success-light",
+    "routerApi": "/api/config/sync",
+    "singularName": "api::config.config",
+    "roles": [
+      "create"
+    ]
   }
 
 ]

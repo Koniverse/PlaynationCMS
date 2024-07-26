@@ -24,6 +24,9 @@ export default {
       if (pluralId === 'task') {
         result = await strapi.service('api::task.task').customList(generalParams);
       }
+      if (pluralId === 'config') {
+        result = await strapi.service('api::config.config').customList(generalParams);
+      }
 
       // remove some fields
       if (result.length) {

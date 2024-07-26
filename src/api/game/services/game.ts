@@ -12,6 +12,7 @@ export default factories.createCoreService('api::game.game', ({strapi}) => ({
         'icon': true,
         'rank_definition': true,
         'banner': true,
+        leaderboards: true,
       },
       ...params
     });

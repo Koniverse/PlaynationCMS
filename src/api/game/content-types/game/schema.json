@@ -74,6 +74,11 @@
     },
     "pointConversionRate": {
       "type": "float"
+    },
+    "leaderboards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "leader-board.share"
     }
   }
 }
