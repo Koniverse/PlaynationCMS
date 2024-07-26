@@ -39,6 +39,20 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::game.game"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "timeRange": {
+      "type": "enumeration",
+      "enum": [
+        "weekly",
+        "monthly",
+        "yearly"
+      ]
+    },
+    "content_not_show_point": {
+      "type": "text"
     }
   }
 }

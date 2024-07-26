@@ -56,6 +56,9 @@ export interface LeaderBoardShare extends Schema.Component {
       'oneToOne',
       'api::game.game'
     >;
+    slug: Attribute.String;
+    timeRange: Attribute.Enumeration<['weekly', 'monthly', 'yearly']>;
+    content_not_show_point: Attribute.Text;
   };
 }
 

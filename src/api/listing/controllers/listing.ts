@@ -27,6 +27,9 @@ export default {
       if (pluralId === 'config') {
         result = await strapi.service('api::config.config').customList(generalParams);
       }
+      if (pluralId === 'airdrop-campaign') {
+        result = await strapi.service('api::airdrop-campaign.airdrop-campaign').customList(generalParams);
+      }
 
       // remove some fields
       if (result.length) {
