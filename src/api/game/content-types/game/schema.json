@@ -81,6 +81,11 @@
         "casual",
         "farming"
       ]
+    },
+    "leaderboards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "leader-board.share"
     }
   }
 }
