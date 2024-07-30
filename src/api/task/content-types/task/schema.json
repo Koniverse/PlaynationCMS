@@ -79,7 +79,9 @@
         "vara_network",
         "kusama",
         "polkadot",
-        "alephTest"
+        "alephTest",
+        "creditcoin",
+        "creditcoinTest"
       ]
     },
     "share_leaderboard": {

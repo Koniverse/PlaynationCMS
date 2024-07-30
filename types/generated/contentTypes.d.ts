@@ -1183,7 +1183,16 @@ export interface ApiTaskTask extends Schema.CollectionType {
     active: Attribute.Boolean;
     onChainType: Attribute.Enumeration<['attendance']>;
     network: Attribute.Enumeration<
-      ['karura', 'acala', 'vara_network', 'kusama', 'polkadot', 'alephTest']
+      [
+        'karura',
+        'acala',
+        'vara_network',
+        'kusama',
+        'polkadot',
+        'alephTest',
+        'creditcoin',
+        'creditcoinTest'
+      ]
     >;
     share_leaderboard: Attribute.Component<'task.content-share'>;
     airlyftId: Attribute.String;
