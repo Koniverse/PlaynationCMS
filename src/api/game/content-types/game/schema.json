@@ -82,10 +82,10 @@
         "farming"
       ]
     },
-    "leaderboards": {
-      "type": "component",
-      "repeatable": true,
-      "component": "leader-board.share"
+    "leaderboard_groups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::leaderboard-group.leaderboard-group"
     }
   }
 }

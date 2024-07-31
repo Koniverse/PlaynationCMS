@@ -30,13 +30,13 @@ export default factories.createCoreService(
                 d.createdAt !== undefined && delete d.createdAt;
                 d.updatedAt !== undefined && delete d.updatedAt;
                 d.publishedAt !== undefined && delete d.publishedAt;
-                d.leaderboards.forEach((v) => {
-                    if (v.game) {
-                        // @ts-ignore
-                        v.gameId = v.game?.id || v.game;
-                        v.game && delete v.game;
-                    }
-                })
+                // d.leaderboards.forEach((v) => {
+                //     if (v.game) {
+                //         // @ts-ignore
+                //         v.gameId = v.game?.id || v.game;
+                //         v.game && delete v.game;
+                //     }
+                // })
             });
             return data;
         },
