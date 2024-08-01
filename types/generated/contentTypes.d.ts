@@ -898,7 +898,11 @@ export interface ApiAirdropCampaignAirdropCampaign
     token_slug: Attribute.String & Attribute.DefaultTo<'karura_evm-NATIVE-KAR'>;
     share: Attribute.Component<'airdrop-campaign.share'>;
     conditionDescription: Attribute.Text;
-    leaderboards: Attribute.Component<'leader-board.share', true>;
+    leaderboard_groups: Attribute.Relation<
+      'api::airdrop-campaign.airdrop-campaign',
+      'oneToMany',
+      'api::leaderboard-group.leaderboard-group'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -950,39 +954,6 @@ export interface ApiAuditLogAuditLog extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::audit-log.audit-log',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiConfigConfig extends Schema.CollectionType {
-  collectionName: 'configs';
-  info: {
-    singularName: 'config';
-    pluralName: 'configs';
-    displayName: 'Config';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    value: Attribute.DynamicZone<['leader-board.share']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::config.config',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::config.config',
       'oneToOne',
       'admin::user'
     > &
@@ -1064,7 +1035,11 @@ export interface ApiGameGame extends Schema.CollectionType {
     endTime: Attribute.DateTime;
     pointConversionRate: Attribute.Float;
     gameType: Attribute.Enumeration<['casual', 'farming']>;
-    leaderboards: Attribute.Component<'leader-board.share', true>;
+    leaderboard_groups: Attribute.Relation<
+      'api::game.game',
+      'oneToMany',
+      'api::leaderboard-group.leaderboard-group'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1438,7 +1413,6 @@ declare module '@strapi/types' {
       'api::account-baned.account-baned': ApiAccountBanedAccountBaned;
       'api::airdrop-campaign.airdrop-campaign': ApiAirdropCampaignAirdropCampaign;
       'api::audit-log.audit-log': ApiAuditLogAuditLog;
-      'api::config.config': ApiConfigConfig;
       'api::eligibility-list.eligibility-list': ApiEligibilityListEligibilityList;
       'api::game.game': ApiGameGame;
       'api::game-item.game-item': ApiGameItemGameItem;

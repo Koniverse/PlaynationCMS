@@ -192,25 +192,25 @@
     ]
   },
   {
-    "buttonID": "config-production-api",
-    "apiID": "config",
+    "buttonID": "leaderboard-production-api",
+    "apiID": "leaderboard",
     "label": "Deploy Production API",
     "environment": "production",
     "variant": "secondary",
-    "routerApi": "/api/config/sync",
-    "singularName": "api::config.config",
+    "routerApi": "/api/leaderboard/sync",
+    "singularName": "api::leaderboard.leaderboard",
     "roles": [
       "create"
     ]
   },
   {
-    "buttonID": "config-dev-api",
-    "apiID": "config",
+    "buttonID": "leaderboard-dev-api",
+    "apiID": "leaderboard",
     "label": "Deploy Development API",
     "environment": "development",
     "variant": "success-light",
-    "routerApi": "/api/config/sync",
-    "singularName": "api::config.config",
+    "routerApi": "/api/leaderboard/sync",
+    "singularName": "api::leaderboard.leaderboard",
     "roles": [
       "create"
     ]
