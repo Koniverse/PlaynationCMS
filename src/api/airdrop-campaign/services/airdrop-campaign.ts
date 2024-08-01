@@ -18,13 +18,7 @@ export default factories.createCoreService(
                         share: true,
                         'leaderboard_groups': {
                             populate: {
-                                leaderboards: {
-                                    populate: {
-                                        games: true,
-                                        tasks: true,
-                                        sharing: true
-                                    }
-                                }
+                                leaderboards: true
                             },
                             ...params
                         },
@@ -39,14 +33,11 @@ export default factories.createCoreService(
                 d.updatedAt !== undefined && delete d.updatedAt;
                 d.publishedAt !== undefined && delete d.publishedAt;
                 // @ts-ignore
-                d.leaderboards = d.leaderboard_groups.map((group) => {
+                d.leaderboard_groups = d.leaderboard_groups.map((group) => {
                     const {leaderboards} = group;
                     const data = leaderboards.map((leaderboard) => {
                         return {
                             id: leaderboard.id,
-                            name: leaderboard.name,
-                            slug: leaderboard.slug,
-                            sharing: leaderboard.sharing
                         }
                     })
                     return {
@@ -55,7 +46,6 @@ export default factories.createCoreService(
                         leaderboards: data
                     }
                 });
-                d.leaderboard_groups && delete d.leaderboard_groups;
             });
             return data;
         },

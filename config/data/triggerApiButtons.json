@@ -197,7 +197,7 @@
     "label": "Deploy Production API",
     "environment": "production",
     "variant": "secondary",
-    "routerApi": "/api/leaderboard/sync",
+    "routerApi": "/api/key-value/sync",
     "singularName": "api::leaderboard.leaderboard",
     "roles": [
       "create"
@@ -209,7 +209,7 @@
     "label": "Deploy Development API",
     "environment": "development",
     "variant": "success-light",
-    "routerApi": "/api/leaderboard/sync",
+    "routerApi": "/api/key-value/sync",
     "singularName": "api::leaderboard.leaderboard",
     "roles": [
       "create"

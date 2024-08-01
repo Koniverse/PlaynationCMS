@@ -20,13 +20,7 @@ export default factories.createCoreService('api::leaderboard.leaderboard', ({str
             populate: {
                 leaderboard_groups: {
                     populate: {
-                        leaderboards: {
-                            populate: {
-                                games: true,
-                                tasks: true,
-                                sharing: true
-                            }
-                        }
+                        leaderboards: true
                     },
                     ...params
                 }
@@ -42,9 +36,6 @@ export default factories.createCoreService('api::leaderboard.leaderboard', ({str
                 const data = leaderboards.map((leaderboard) => {
                     return {
                         id: leaderboard.id,
-                        name: leaderboard.name,
-                        slug: leaderboard.slug,
-                        sharing: leaderboard.sharing
                     }
                 })
                 return {
