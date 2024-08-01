@@ -10,7 +10,8 @@ export default factories.createCoreService('api::leaderboard.leaderboard', ({str
             sort: 'id:asc',
             populate: {
                 games: true,
-                tasks: true
+                tasks: true,
+                sharing: true
             },
             ...params
         });
@@ -22,7 +23,8 @@ export default factories.createCoreService('api::leaderboard.leaderboard', ({str
                         leaderboards: {
                             populate: {
                                 games: true,
-                                tasks: true
+                                tasks: true,
+                                sharing: true
                             }
                         }
                     },
@@ -34,24 +36,21 @@ export default factories.createCoreService('api::leaderboard.leaderboard', ({str
         let leaderboard_general = {};
         if  (leaderboardConfigData) {
             const {leaderboard_groups} = leaderboardConfigData;
-            console.log('leaderboard_groups', leaderboard_groups)
             // @ts-ignore
             leaderboard_general = leaderboard_groups.map((group) => {
                 const {leaderboards} = group;
-                leaderboards.forEach((leaderboard) => {
-                    leaderboard.createdAt !== undefined && delete leaderboard.createdAt;
-                    leaderboard.updatedAt !== undefined && delete leaderboard.updatedAt;
-                    leaderboard.publishedAt !== undefined && delete leaderboard.publishedAt;
-
-                    // @ts-ignore
-                    leaderboard.games = leaderboard.games.map((game) => game.id);
-                    // @ts-ignore
-                    leaderboard.tasks = leaderboard.tasks.map((task) => task.id);
+                const data = leaderboards.map((leaderboard) => {
+                    return {
+                        id: leaderboard.id,
+                        name: leaderboard.name,
+                        slug: leaderboard.slug,
+                        sharing: leaderboard.sharing
+                    }
                 })
                 return {
                     leaderboardGroupId: group.id,
                     leaderboardGroupName: group.name,
-                    leaderboards
+                    leaderboards: data
                 }
             });
 

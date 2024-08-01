@@ -17,7 +17,8 @@ export default factories.createCoreService('api::game.game', ({strapi}) => ({
                          leaderboards: {
                             populate: {
                                 games: true,
-                                tasks: true
+                                tasks: true,
+                                sharing: true
                             }
                         }
                     },
@@ -35,20 +36,18 @@ export default factories.createCoreService('api::game.game', ({strapi}) => ({
             // @ts-ignore
             d.leaderboards = d.leaderboard_groups.map((group) => {
                 const {leaderboards} = group;
-                leaderboards.forEach((leaderboard) => {
-                    leaderboard.createdAt !== undefined && delete leaderboard.createdAt;
-                    leaderboard.updatedAt !== undefined && delete leaderboard.updatedAt;
-                    leaderboard.publishedAt !== undefined && delete leaderboard.publishedAt;
-
-                    // @ts-ignore
-                    leaderboard.games = leaderboard.games.map((game) => game.id);
-                    // @ts-ignore
-                    leaderboard.tasks = leaderboard.tasks.map((task) => task.id);
+                const data = leaderboards.map((leaderboard) => {
+                    return {
+                        id: leaderboard.id,
+                        name: leaderboard.name,
+                        slug: leaderboard.slug,
+                        sharing: leaderboard.sharing
+                    }
                 })
                 return {
                     leaderboardGroupId: group.id,
                     leaderboardGroupName: group.name,
-                    leaderboards
+                    leaderboards: data
                 }
             });
             d.leaderboard_groups && delete d.leaderboard_groups;
