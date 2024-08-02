@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "general_leaderboards",
+  "info": {
+    "singularName": "general-leaderboard",
+    "pluralName": "general-leaderboards",
+    "displayName": "General Leaderboard"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "leaderboard_groups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::leaderboard-group.leaderboard-group"
+    }
+  }
+}

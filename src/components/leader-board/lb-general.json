@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_leader_board_lb_generals",
+  "info": {
+    "displayName": "general-params",
+    "icon": "earth",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "all:nps",
+        "task:nps",
+        "task:quantity",
+        "referral:nps",
+        "referral:quantity",
+        "game:casual:nps",
+        "game:casual:point",
+        "game:casual:quantity",
+        "game:farming:point",
+        "game:farming:totalPoint",
+        "game:farming:earnSpeed"
+      ]
+    },
+    "specialTime": {
+      "type": "enumeration",
+      "enum": [
+        "weekly",
+        "monthly",
+        "yearly"
+      ]
+    },
+    "startTime": {
+      "type": "datetime"
+    },
+    "endTime": {
+      "type": "datetime"
+    },
+    "metedata": {
+      "type": "json"
+    }
+  }
+}

@@ -898,6 +898,7 @@ export interface ApiAirdropCampaignAirdropCampaign
     token_slug: Attribute.String & Attribute.DefaultTo<'karura_evm-NATIVE-KAR'>;
     share: Attribute.Component<'airdrop-campaign.share'>;
     conditionDescription: Attribute.Text;
+    leaderboards: Attribute.Component<'leader-board.share', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -949,6 +950,39 @@ export interface ApiAuditLogAuditLog extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::audit-log.audit-log',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiConfigConfig extends Schema.CollectionType {
+  collectionName: 'configs';
+  info: {
+    singularName: 'config';
+    pluralName: 'configs';
+    displayName: 'Config';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    value: Attribute.DynamicZone<['leader-board.share']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::config.config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::config.config',
       'oneToOne',
       'admin::user'
     > &
@@ -1030,6 +1064,7 @@ export interface ApiGameGame extends Schema.CollectionType {
     endTime: Attribute.DateTime;
     pointConversionRate: Attribute.Float;
     gameType: Attribute.Enumeration<['casual', 'farming']>;
+    leaderboards: Attribute.Component<'leader-board.share', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1085,6 +1120,41 @@ export interface ApiGameItemGameItem extends Schema.CollectionType {
   };
 }
 
+export interface ApiGeneralLeaderboardGeneralLeaderboard
+  extends Schema.SingleType {
+  collectionName: 'general_leaderboards';
+  info: {
+    singularName: 'general-leaderboard';
+    pluralName: 'general-leaderboards';
+    displayName: 'General Leaderboard';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    leaderboard_groups: Attribute.Relation<
+      'api::general-leaderboard.general-leaderboard',
+      'oneToMany',
+      'api::leaderboard-group.leaderboard-group'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::general-leaderboard.general-leaderboard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::general-leaderboard.general-leaderboard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGiveAwayPointGiveAwayPoint extends Schema.CollectionType {
   collectionName: 'give_away_points';
   info: {
@@ -1110,6 +1180,104 @@ export interface ApiGiveAwayPointGiveAwayPoint extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::give-away-point.give-away-point',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLeaderboardLeaderboard extends Schema.CollectionType {
+  collectionName: 'leaderboards';
+  info: {
+    singularName: 'leaderboard';
+    pluralName: 'leaderboards';
+    displayName: 'Leaderboard';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    slug: Attribute.String & Attribute.Required;
+    type: Attribute.Enumeration<
+      [
+        'all:nps',
+        'task:nps',
+        'task:quantity',
+        'referral:nps',
+        'referral:quantity',
+        'game:casual:nps',
+        'game:casual:point',
+        'game:casual:quantity',
+        'game:farming:point',
+        'game:farming:totalPoint',
+        'game:farming:earnSpeed'
+      ]
+    >;
+    specialTime: Attribute.Enumeration<['weekly', 'monthly', 'yearly']>;
+    startTime: Attribute.DateTime;
+    endTime: Attribute.DateTime;
+    games: Attribute.Relation<
+      'api::leaderboard.leaderboard',
+      'oneToMany',
+      'api::game.game'
+    >;
+    tasks: Attribute.Relation<
+      'api::leaderboard.leaderboard',
+      'oneToMany',
+      'api::task.task'
+    >;
+    metadata: Attribute.JSON;
+    sharing: Attribute.Component<'leader-board.x-sharing'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::leaderboard.leaderboard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::leaderboard.leaderboard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLeaderboardGroupLeaderboardGroup
+  extends Schema.CollectionType {
+  collectionName: 'leaderboard_groups';
+  info: {
+    singularName: 'leaderboard-group';
+    pluralName: 'leaderboard-groups';
+    displayName: 'Leaderboard Group';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    leaderboards: Attribute.Relation<
+      'api::leaderboard-group.leaderboard-group',
+      'oneToMany',
+      'api::leaderboard.leaderboard'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::leaderboard-group.leaderboard-group',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::leaderboard-group.leaderboard-group',
       'oneToOne',
       'admin::user'
     > &
@@ -1270,10 +1438,14 @@ declare module '@strapi/types' {
       'api::account-baned.account-baned': ApiAccountBanedAccountBaned;
       'api::airdrop-campaign.airdrop-campaign': ApiAirdropCampaignAirdropCampaign;
       'api::audit-log.audit-log': ApiAuditLogAuditLog;
+      'api::config.config': ApiConfigConfig;
       'api::eligibility-list.eligibility-list': ApiEligibilityListEligibilityList;
       'api::game.game': ApiGameGame;
       'api::game-item.game-item': ApiGameItemGameItem;
+      'api::general-leaderboard.general-leaderboard': ApiGeneralLeaderboardGeneralLeaderboard;
       'api::give-away-point.give-away-point': ApiGiveAwayPointGiveAwayPoint;
+      'api::leaderboard.leaderboard': ApiLeaderboardLeaderboard;
+      'api::leaderboard-group.leaderboard-group': ApiLeaderboardGroupLeaderboardGroup;
       'api::task.task': ApiTaskTask;
       'api::task-category.task-category': ApiTaskCategoryTaskCategory;
       'api::telegram-notification.telegram-notification': ApiTelegramNotificationTelegramNotification;

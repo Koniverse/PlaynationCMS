@@ -35,6 +35,67 @@ export interface GameRankDefinition extends Schema.Component {
   };
 }
 
+export interface LeaderBoardGameParams extends Schema.Component {
+  collectionName: 'components_leader_board_game_params';
+  info: {
+    displayName: 'custom-params';
+    icon: 'chartBubble';
+    description: '';
+  };
+  attributes: {
+    games: Attribute.Relation<
+      'leader-board.game-params',
+      'oneToMany',
+      'api::game.game'
+    >;
+    tasks: Attribute.Relation<
+      'leader-board.game-params',
+      'oneToMany',
+      'api::task.task'
+    >;
+  };
+}
+
+export interface LeaderBoardShare extends Schema.Component {
+  collectionName: 'components_leader_board_shares';
+  info: {
+    displayName: 'Share';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String;
+    from_date: Attribute.DateTime;
+    to_date: Attribute.DateTime;
+    type: Attribute.Enumeration<
+      ['all', 'game', 'task', 'gamePoint', 'referral', 'inviteToPlay']
+    >;
+    content_share: Attribute.Text;
+    hashtags: Attribute.String;
+    url: Attribute.String;
+    game: Attribute.Relation<
+      'leader-board.share',
+      'oneToOne',
+      'api::game.game'
+    >;
+    slug: Attribute.String;
+    timeRange: Attribute.Enumeration<['weekly', 'monthly', 'yearly']>;
+    content_not_show_point: Attribute.Text;
+  };
+}
+
+export interface LeaderBoardXSharing extends Schema.Component {
+  collectionName: 'components_leader_board_x_sharings';
+  info: {
+    displayName: 'x-sharing';
+    icon: 'chartBubble';
+  };
+  attributes: {
+    url: Attribute.String;
+    content: Attribute.Text;
+    hashtags: Attribute.String;
+  };
+}
+
 export interface TaskAchievement extends Schema.Component {
   collectionName: 'components_task_achievements';
   info: {
@@ -89,6 +150,9 @@ declare module '@strapi/types' {
     export interface Components {
       'airdrop-campaign.share': AirdropCampaignShare;
       'game.rank-definition': GameRankDefinition;
+      'leader-board.game-params': LeaderBoardGameParams;
+      'leader-board.share': LeaderBoardShare;
+      'leader-board.x-sharing': LeaderBoardXSharing;
       'task.achievement': TaskAchievement;
       'task.content-share': TaskContentShare;
       'telegram.inline-keyboard': TelegramInlineKeyboard;

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_leader_board_x_sharings",
+  "info": {
+    "displayName": "x-sharing",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    },
+    "hashtags": {
+      "type": "string"
+    }
+  }
+}
