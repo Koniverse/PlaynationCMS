@@ -1183,6 +1183,7 @@ export interface ApiLeaderboardLeaderboard extends Schema.CollectionType {
         'task:quantity',
         'referral:nps',
         'referral:quantity',
+        'referral:inviteToPlay:nps',
         'game:casual:nps',
         'game:casual:point',
         'game:casual:quantity',
