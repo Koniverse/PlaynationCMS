@@ -16,8 +16,10 @@ export default factories.createCoreService(
                         icon: true,
                         banner: true,
                         share: true,
-                        leaderboards: {
-                            populate: '*',
+                        'leaderboard_groups': {
+                            populate: {
+                                leaderboards: true
+                            },
                             ...params
                         },
                     },
@@ -30,13 +32,20 @@ export default factories.createCoreService(
                 d.createdAt !== undefined && delete d.createdAt;
                 d.updatedAt !== undefined && delete d.updatedAt;
                 d.publishedAt !== undefined && delete d.publishedAt;
-                // d.leaderboards.forEach((v) => {
-                //     if (v.game) {
-                //         // @ts-ignore
-                //         v.gameId = v.game?.id || v.game;
-                //         v.game && delete v.game;
-                //     }
-                // })
+                // @ts-ignore
+                d.leaderboard_groups = d.leaderboard_groups.map((group) => {
+                    const {leaderboards} = group;
+                    const data = leaderboards.map((leaderboard) => {
+                        return {
+                            id: leaderboard.id,
+                        }
+                    })
+                    return {
+                        leaderboardGroupId: group.id,
+                        leaderboardGroupName: group.name,
+                        leaderboards: data
+                    }
+                });
             });
             return data;
         },

@@ -24,8 +24,8 @@ export default {
       if (pluralId === 'task') {
         result = await strapi.service('api::task.task').customList(generalParams);
       }
-      if (pluralId === 'config') {
-        result = await strapi.service('api::config.config').customList(generalParams);
+      if (pluralId === 'leaderboard') {
+        result = await strapi.service('api::leaderboard.leaderboard').customList(generalParams);
       }
       if (pluralId === 'airdrop-campaign') {
         result = await strapi.service('api::airdrop-campaign.airdrop-campaign').customList(generalParams);

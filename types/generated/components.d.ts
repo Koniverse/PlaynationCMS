@@ -56,30 +56,36 @@ export interface LeaderBoardGameParams extends Schema.Component {
   };
 }
 
-export interface LeaderBoardShare extends Schema.Component {
-  collectionName: 'components_leader_board_shares';
+export interface LeaderBoardLbGeneral extends Schema.Component {
+  collectionName: 'components_leader_board_lb_generals';
   info: {
-    displayName: 'Share';
+    displayName: 'general-params';
+    icon: 'earth';
     description: '';
   };
   attributes: {
     name: Attribute.String;
-    from_date: Attribute.DateTime;
-    to_date: Attribute.DateTime;
-    type: Attribute.Enumeration<
-      ['all', 'game', 'task', 'gamePoint', 'referral', 'inviteToPlay']
-    >;
-    content_share: Attribute.Text;
-    hashtags: Attribute.String;
-    url: Attribute.String;
-    game: Attribute.Relation<
-      'leader-board.share',
-      'oneToOne',
-      'api::game.game'
-    >;
     slug: Attribute.String;
-    timeRange: Attribute.Enumeration<['weekly', 'monthly', 'yearly']>;
-    content_not_show_point: Attribute.Text;
+    type: Attribute.Enumeration<
+      [
+        'all:nps',
+        'task:nps',
+        'task:quantity',
+        'referral:nps',
+        'referral:quantity',
+        'referral:inviteToPlay:nps',
+        'game:casual:nps',
+        'game:casual:point',
+        'game:casual:quantity',
+        'game:farming:point',
+        'game:farming:totalPoint',
+        'game:farming:earnSpeed'
+      ]
+    >;
+    specialTime: Attribute.Enumeration<['weekly', 'monthly', 'yearly']>;
+    startTime: Attribute.DateTime;
+    endTime: Attribute.DateTime;
+    metedata: Attribute.JSON;
   };
 }
 
@@ -151,7 +157,7 @@ declare module '@strapi/types' {
       'airdrop-campaign.share': AirdropCampaignShare;
       'game.rank-definition': GameRankDefinition;
       'leader-board.game-params': LeaderBoardGameParams;
-      'leader-board.share': LeaderBoardShare;
+      'leader-board.lb-general': LeaderBoardLbGeneral;
       'leader-board.x-sharing': LeaderBoardXSharing;
       'task.achievement': TaskAchievement;
       'task.content-share': TaskContentShare;
