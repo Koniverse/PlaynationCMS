@@ -74,6 +74,7 @@ export interface LeaderBoardLbGeneral extends Schema.Component {
         'referral:nps',
         'referral:quantity',
         'referral:inviteToPlay:nps',
+        'referral:inviteToPlay:quantity',
         'game:casual:nps',
         'game:casual:point',
         'game:casual:quantity',
