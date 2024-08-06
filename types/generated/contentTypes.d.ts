@@ -1301,7 +1301,8 @@ export interface ApiTaskTask extends Schema.CollectionType {
         'polkadot',
         'alephTest',
         'creditcoin',
-        'creditcoinTest'
+        'creditcoinTest',
+        'mythos'
       ]
     >;
     share_leaderboard: Attribute.Component<'task.content-share'>;
