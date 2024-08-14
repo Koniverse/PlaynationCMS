@@ -94,6 +94,9 @@
         "mobile"
       ],
       "customField": "plugin::multi-select.multi-select"
+    },
+    "restrictedAccessText": {
+      "type": "text"
     }
   }
 }

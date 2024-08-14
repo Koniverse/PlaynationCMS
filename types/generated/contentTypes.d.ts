@@ -1045,6 +1045,7 @@ export interface ApiGameGame extends Schema.CollectionType {
         'plugin::multi-select.multi-select',
         ['desktop', 'mobile']
       >;
+    restrictedAccessText: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
