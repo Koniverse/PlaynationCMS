@@ -86,6 +86,14 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::leaderboard-group.leaderboard-group"
+    },
+    "restrictedAccess": {
+      "type": "customField",
+      "options": [
+        "desktop",
+        "mobile"
+      ],
+      "customField": "plugin::multi-select.multi-select"
     }
   }
 }

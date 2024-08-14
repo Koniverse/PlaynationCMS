@@ -1040,6 +1040,11 @@ export interface ApiGameGame extends Schema.CollectionType {
       'oneToMany',
       'api::leaderboard-group.leaderboard-group'
     >;
+    restrictedAccess: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['desktop', 'mobile']
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
