@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_achievement_achievement_milestone",
+  "info": {
+    "displayName": "achievement_milestone",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "uuid": {
+      "type": "customField",
+      "options": {
+        "disable-regenerate": true,
+        "uuid-format": ""
+      },
+      "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "nps": {
+      "type": "integer"
+    },
+    "conditions_combination": {
+      "type": "enumeration",
+      "enum": [
+        "and",
+        "or"
+      ],
+      "default": "and",
+      "required": true
+    },
+    "conditions": {
+      "displayName": "milestone-condition",
+      "type": "component",
+      "repeatable": true,
+      "component": "achievement.milestone-condition",
+      "max": 9,
+      "min": 1
+    }
+  }
+}

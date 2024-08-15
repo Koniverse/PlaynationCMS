@@ -590,6 +590,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -741,53 +788,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
-  info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginSlugifySlug extends Schema.CollectionType {
   collectionName: 'slugs';
   info: {
@@ -853,6 +853,91 @@ export interface ApiAccountBanedAccountBaned extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::account-baned.account-baned',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAchievementAchievement extends Schema.CollectionType {
+  collectionName: 'achievements';
+  info: {
+    singularName: 'achievement';
+    pluralName: 'achievements';
+    displayName: 'Achievement';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    slug: Attribute.String;
+    name: Attribute.String;
+    achievement_category: Attribute.Relation<
+      'api::achievement.achievement',
+      'oneToOne',
+      'api::achievement-category.achievement-category'
+    >;
+    description: Attribute.Text;
+    icon: Attribute.Media;
+    startClaim: Attribute.DateTime;
+    endClaim: Attribute.DateTime;
+    metrics: Attribute.Component<'achievement.achievement-metric', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 3;
+        },
+        number
+      >;
+    milestones: Attribute.Component<'achievement.achievement-milestone', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::achievement.achievement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::achievement.achievement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAchievementCategoryAchievementCategory
+  extends Schema.CollectionType {
+  collectionName: 'achievement_categories';
+  info: {
+    singularName: 'achievement-category';
+    pluralName: 'achievement-categories';
+    displayName: 'Achievement Category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    slug: Attribute.String;
+    name: Attribute.String;
+    description: Attribute.Text;
+    icon: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::achievement-category.achievement-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::achievement-category.achievement-category',
       'oneToOne',
       'admin::user'
     > &
@@ -1414,12 +1499,14 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::slugify.slug': PluginSlugifySlug;
       'api::account-baned.account-baned': ApiAccountBanedAccountBaned;
+      'api::achievement.achievement': ApiAchievementAchievement;
+      'api::achievement-category.achievement-category': ApiAchievementCategoryAchievementCategory;
       'api::airdrop-campaign.airdrop-campaign': ApiAirdropCampaignAirdropCampaign;
       'api::audit-log.audit-log': ApiAuditLogAuditLog;
       'api::eligibility-list.eligibility-list': ApiEligibilityListEligibilityList;

@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "achievements",
+  "info": {
+    "singularName": "achievement",
+    "pluralName": "achievements",
+    "displayName": "Achievement",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "achievement_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::achievement-category.achievement-category"
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "startClaim": {
+      "type": "datetime"
+    },
+    "endClaim": {
+      "type": "datetime"
+    },
+    "metrics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "achievement.achievement-metric",
+      "max": 3,
+      "min": 1,
+      "required": true
+    },
+    "milestones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "achievement.achievement-milestone"
+    }
+  }
+}

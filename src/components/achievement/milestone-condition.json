@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_achievement_milestone_conditions",
+  "info": {
+    "displayName": "milestone-condition",
+    "icon": "star",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "metric": {
+      "type": "enumeration",
+      "enum": [
+        "metric-1",
+        "metric-2",
+        "metric-3"
+      ],
+      "default": "metric-1",
+      "required": true
+    },
+    "comparison": {
+      "type": "enumeration",
+      "enum": [
+        "gt",
+        "gte",
+        "lt",
+        "lte",
+        "eq",
+        "rank_gt",
+        "rank_gte",
+        "rank_lt",
+        "rank_lte",
+        "rank_eq"
+      ],
+      "default": "gt",
+      "required": true
+    },
+    "value": {
+      "type": "float",
+      "required": true,
+      "default": 0
+    }
+  }
+}

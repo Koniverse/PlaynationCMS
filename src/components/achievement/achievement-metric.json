@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_achievement_achievement_metrics",
+  "info": {
+    "displayName": "achievement_metric",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "all:nps",
+        "task:nps",
+        "task:quantity",
+        "referral:nps",
+        "referral:quantity",
+        "referral:inviteToPlay:nps",
+        "referral:inviteToPlay:quantity",
+        "game:casual:nps",
+        "game:casual:point",
+        "game:casual:quantity",
+        "game:farming:point",
+        "game:farming:totalPoint",
+        "game:farming:earnSpeed"
+      ],
+      "required": true
+    },
+    "specialTime": {
+      "type": "enumeration",
+      "enum": [
+        "weekly",
+        "monthly",
+        "yearly"
+      ]
+    },
+    "startTime": {
+      "type": "datetime"
+    },
+    "endTime": {
+      "type": "datetime"
+    },
+    "games": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::game.game"
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task.task"
+    },
+    "metadata": {
+      "type": "json"
+    }
+  }
+}
