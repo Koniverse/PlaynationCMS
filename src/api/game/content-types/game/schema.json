@@ -97,6 +97,11 @@
     },
     "restrictedAccessText": {
       "type": "text"
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "metadata.version-info"
     }
   }
 }

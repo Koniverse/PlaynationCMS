@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_metadata_game_versions",
+  "info": {
+    "displayName": "Game Version",
+    "icon": "cube",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "game": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::game.game"
+    },
+    "version": {
+      "type": "decimal",
+      "required": true
+    },
+    "minVersion": {
+      "type": "decimal"
+    }
+  }
+}

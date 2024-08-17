@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_metadata_maintenance_infos",
+  "info": {
+    "displayName": "Maintenance Info",
+    "icon": "cog",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "startTime": {
+      "type": "datetime"
+    },
+    "endTime": {
+      "type": "datetime"
+    },
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    }
+  }
+}

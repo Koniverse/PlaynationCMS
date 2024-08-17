@@ -103,6 +103,71 @@ export interface LeaderBoardXSharing extends Schema.Component {
   };
 }
 
+export interface MetadataGameVersion extends Schema.Component {
+  collectionName: 'components_metadata_game_versions';
+  info: {
+    displayName: 'Game Version';
+    icon: 'cube';
+    description: '';
+  };
+  attributes: {
+    game: Attribute.Relation<
+      'metadata.game-version',
+      'oneToOne',
+      'api::game.game'
+    >;
+    version: Attribute.Decimal & Attribute.Required;
+    minVersion: Attribute.Decimal;
+  };
+}
+
+export interface MetadataMaintenanceInfo extends Schema.Component {
+  collectionName: 'components_metadata_maintenance_infos';
+  info: {
+    displayName: 'Maintenance Info';
+    icon: 'cog';
+    description: '';
+  };
+  attributes: {
+    startTime: Attribute.DateTime;
+    endTime: Attribute.DateTime;
+    title: Attribute.String;
+    message: Attribute.Text;
+  };
+}
+
+export interface MetadataVersionGroup extends Schema.Component {
+  collectionName: 'components_metadata_version_groups';
+  info: {
+    displayName: 'version-group';
+    icon: 'dashboard';
+    description: '';
+  };
+  attributes: {
+    application: Attribute.Component<'metadata.version-info'> &
+      Attribute.Required;
+    game: Attribute.Component<'metadata.version-info'>;
+    leaderboard: Attribute.Component<'metadata.version-info'>;
+    task: Attribute.Component<'metadata.version-info'>;
+    achievement: Attribute.Component<'metadata.version-info'>;
+    airdrop: Attribute.Component<'metadata.version-info'>;
+  };
+}
+
+export interface MetadataVersionInfo extends Schema.Component {
+  collectionName: 'components_metadata_version_infos';
+  info: {
+    displayName: 'Version Info';
+    icon: 'cube';
+    description: '';
+  };
+  attributes: {
+    version: Attribute.Decimal & Attribute.Required;
+    minVersion: Attribute.Decimal;
+    updateMessage: Attribute.String;
+  };
+}
+
 export interface TaskAchievement extends Schema.Component {
   collectionName: 'components_task_achievements';
   info: {
@@ -160,6 +225,10 @@ declare module '@strapi/types' {
       'leader-board.game-params': LeaderBoardGameParams;
       'leader-board.lb-general': LeaderBoardLbGeneral;
       'leader-board.x-sharing': LeaderBoardXSharing;
+      'metadata.game-version': MetadataGameVersion;
+      'metadata.maintenance-info': MetadataMaintenanceInfo;
+      'metadata.version-group': MetadataVersionGroup;
+      'metadata.version-info': MetadataVersionInfo;
       'task.achievement': TaskAchievement;
       'task.content-share': TaskContentShare;
       'telegram.inline-keyboard': TelegramInlineKeyboard;

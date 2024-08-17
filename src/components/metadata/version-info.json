@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_metadata_version_infos",
+  "info": {
+    "displayName": "Version Info",
+    "icon": "cube",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "version": {
+      "type": "decimal",
+      "required": true
+    },
+    "minVersion": {
+      "type": "decimal"
+    },
+    "updateMessage": {
+      "type": "string"
+    }
+  }
+}

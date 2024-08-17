@@ -214,6 +214,30 @@
     "roles": [
       "create"
     ]
+  },
+  {
+    "buttonID": "metadata-config-production-api",
+    "apiID": "metadata-config",
+    "label": "Deploy Production API",
+    "environment": "production",
+    "variant": "secondary",
+    "routerApi": "/api/metadata/sync",
+    "singularName": "api::metadata-config.metadata-config",
+    "roles": [
+      "create"
+    ]
+  },
+  {
+    "buttonID": "metadata-config-dev-api",
+    "apiID": "metadata-config",
+    "label": "Deploy Development API",
+    "environment": "development",
+    "variant": "success-light",
+    "routerApi": "/api/metadata/sync",
+    "singularName": "api::metadata-config.metadata-config",
+    "roles": [
+      "create"
+    ]
   }
 
 ]

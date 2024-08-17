@@ -1046,6 +1046,7 @@ export interface ApiGameGame extends Schema.CollectionType {
         ['desktop', 'mobile']
       >;
     restrictedAccessText: Attribute.Text;
+    metadata: Attribute.Component<'metadata.version-info'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1268,6 +1269,41 @@ export interface ApiLeaderboardGroupLeaderboardGroup
   };
 }
 
+export interface ApiMetadataConfigMetadataConfig extends Schema.CollectionType {
+  collectionName: 'metadata_configs';
+  info: {
+    singularName: 'metadata-config';
+    pluralName: 'metadata-configs';
+    displayName: 'Metadata Config';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    description: Attribute.Text;
+    versions: Attribute.Component<'metadata.version-group'> &
+      Attribute.Required;
+    maintenanceInfo: Attribute.Component<'metadata.maintenance-info'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::metadata-config.metadata-config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::metadata-config.metadata-config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTaskTask extends Schema.CollectionType {
   collectionName: 'tasks';
   info: {
@@ -1429,6 +1465,7 @@ declare module '@strapi/types' {
       'api::give-away-point.give-away-point': ApiGiveAwayPointGiveAwayPoint;
       'api::leaderboard.leaderboard': ApiLeaderboardLeaderboard;
       'api::leaderboard-group.leaderboard-group': ApiLeaderboardGroupLeaderboardGroup;
+      'api::metadata-config.metadata-config': ApiMetadataConfigMetadataConfig;
       'api::task.task': ApiTaskTask;
       'api::task-category.task-category': ApiTaskCategoryTaskCategory;
       'api::telegram-notification.telegram-notification': ApiTelegramNotificationTelegramNotification;

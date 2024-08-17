@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_metadata_version_groups",
+  "info": {
+    "displayName": "version-group",
+    "icon": "dashboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "application": {
+      "type": "component",
+      "repeatable": false,
+      "component": "metadata.version-info",
+      "required": true
+    },
+    "game": {
+      "type": "component",
+      "repeatable": false,
+      "component": "metadata.version-info"
+    },
+    "leaderboard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "metadata.version-info"
+    },
+    "task": {
+      "type": "component",
+      "repeatable": false,
+      "component": "metadata.version-info"
+    },
+    "achievement": {
+      "type": "component",
+      "repeatable": false,
+      "component": "metadata.version-info"
+    },
+    "airdrop": {
+      "type": "component",
+      "repeatable": false,
+      "component": "metadata.version-info"
+    }
+  }
+}

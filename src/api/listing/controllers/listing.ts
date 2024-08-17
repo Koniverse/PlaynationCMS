@@ -30,6 +30,9 @@ export default {
       if (pluralId === 'airdrop-campaign') {
         result = await strapi.service('api::airdrop-campaign.airdrop-campaign').customList(generalParams);
       }
+      if (pluralId === 'metadata-config') {
+        result = await strapi.service('api::metadata-config.metadata-config').customList(generalParams);
+      }
 
       // remove some fields
       if (result.length) {

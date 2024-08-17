@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "metadata_configs",
+  "info": {
+    "singularName": "metadata-config",
+    "pluralName": "metadata-configs",
+    "displayName": "Metadata Config",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "versions": {
+      "displayName": "version-group",
+      "type": "component",
+      "repeatable": false,
+      "component": "metadata.version-group",
+      "required": true
+    },
+    "maintenanceInfo": {
+      "displayName": "Maintenance Info",
+      "type": "component",
+      "repeatable": false,
+      "component": "metadata.maintenance-info"
+    }
+  }
+}
