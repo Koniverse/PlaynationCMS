@@ -52,6 +52,14 @@
     },
     "metadata": {
       "type": "json"
+    },
+    "metricId": {
+      "type": "enumeration",
+      "enum": [
+        "metric-1",
+        "metric-2",
+        "metric-3"
+      ]
     }
   }
 }

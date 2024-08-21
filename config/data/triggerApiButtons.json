@@ -214,6 +214,30 @@
     "roles": [
       "create"
     ]
+  },
+  {
+    "buttonID": "achievement-production-api",
+    "apiID": "achievement",
+    "label": "Deploy Production API",
+    "environment": "production",
+    "variant": "secondary",
+    "routerApi": "/api/achievement/sync",
+    "singularName": "api::achievement.achievement",
+    "roles": [
+      "create"
+    ]
+  },
+  {
+    "buttonID": "achievement-dev-api",
+    "apiID": "achievement",
+    "label": "Deploy Development API",
+    "environment": "development",
+    "variant": "success-light",
+    "routerApi": "/api/achievement/sync",
+    "singularName": "api::achievement.achievement",
+    "roles": [
+      "create"
+    ]
   }
 
 ]

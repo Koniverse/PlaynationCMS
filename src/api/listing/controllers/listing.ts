@@ -30,6 +30,9 @@ export default {
       if (pluralId === 'airdrop-campaign') {
         result = await strapi.service('api::airdrop-campaign.airdrop-campaign').customList(generalParams);
       }
+      if (pluralId === 'achievement') {
+        result = await strapi.service('api::achievement.achievement').customList(generalParams);
+      }
 
       // remove some fields
       if (result.length) {

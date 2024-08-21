@@ -40,6 +40,7 @@ export interface AchievementAchievementMetric extends Schema.Component {
       'api::task.task'
     >;
     metadata: Attribute.JSON;
+    metricId: Attribute.Enumeration<['metric-1', 'metric-2', 'metric-3']>;
   };
 }
 
@@ -52,21 +53,6 @@ export interface AchievementAchievementMilestone extends Schema.Component {
   };
   attributes: {
     name: Attribute.String;
-    uuid: Attribute.UID<
-      undefined,
-      undefined,
-      {
-        'disable-regenerate': true;
-        'uuid-format': '';
-      }
-    > &
-      Attribute.CustomField<
-        'plugin::strapi-advanced-uuid.uuid',
-        {
-          'disable-regenerate': true;
-          'uuid-format': '';
-        }
-      >;
     nps: Attribute.Integer;
     conditions_combination: Attribute.Enumeration<['and', 'or']> &
       Attribute.Required &

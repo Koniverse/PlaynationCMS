@@ -10,14 +10,6 @@
     "name": {
       "type": "string"
     },
-    "uuid": {
-      "type": "customField",
-      "options": {
-        "disable-regenerate": true,
-        "uuid-format": ""
-      },
-      "customField": "plugin::strapi-advanced-uuid.uuid"
-    },
     "nps": {
       "type": "integer"
     },
