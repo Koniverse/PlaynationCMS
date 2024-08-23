@@ -893,6 +893,7 @@ export interface ApiAchievementAchievement extends Schema.CollectionType {
         number
       >;
     milestones: Attribute.Component<'achievement.achievement-milestone', true>;
+    type: Attribute.Enumeration<['login', 'referral', 'game', 'task']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

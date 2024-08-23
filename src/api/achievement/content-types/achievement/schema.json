@@ -55,6 +55,15 @@
       "type": "component",
       "repeatable": true,
       "component": "achievement.achievement-milestone"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "login",
+        "referral",
+        "game",
+        "task"
+      ]
     }
   }
 }
