@@ -886,8 +886,8 @@ export interface ApiAirdropCampaignAirdropCampaign
       Attribute.Required &
       Attribute.DefaultTo<'ACTIVE'>;
     raffle_count: Attribute.Integer;
-    start: Attribute.Date;
-    end: Attribute.Date;
+    start: Attribute.DateTime;
+    end: Attribute.DateTime;
     symbol: Attribute.String & Attribute.DefaultTo<'KAR'>;
     banner: Attribute.Media;
     method: Attribute.Enumeration<['RAFFLE']> & Attribute.DefaultTo<'RAFFLE'>;

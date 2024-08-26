@@ -62,10 +62,10 @@
       "type": "integer"
     },
     "start": {
-      "type": "date"
+      "type": "datetime"
     },
     "end": {
-      "type": "date"
+      "type": "datetime"
     },
     "symbol": {
       "type": "string",
