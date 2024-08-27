@@ -1282,7 +1282,8 @@ export interface ApiLeaderboardLeaderboard extends Schema.CollectionType {
         'game:casual:quantity',
         'game:farming:point',
         'game:farming:totalPoint',
-        'game:farming:earnSpeed'
+        'game:farming:earnSpeed',
+        'account:daily:quantity'
       ]
     >;
     specialTime: Attribute.Enumeration<['weekly', 'monthly', 'yearly']>;
@@ -1403,7 +1404,6 @@ export interface ApiTaskTask extends Schema.CollectionType {
       Attribute.DefaultTo<'normal'>;
     airlyftEventId: Attribute.String;
     airlyftWidgetId: Attribute.String;
-    achievement: Attribute.Component<'task.achievement'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -22,7 +22,8 @@ export interface AchievementAchievementMetric extends Schema.Component {
         'game:casual:quantity',
         'game:farming:point',
         'game:farming:totalPoint',
-        'game:farming:earnSpeed'
+        'game:farming:earnSpeed',
+        'account:daily:quantity'
       ]
     > &
       Attribute.Required;
